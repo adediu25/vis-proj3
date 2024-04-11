@@ -17,13 +17,13 @@ Season,Episode,Character,Line
 "
 22,1,Cartman,"I said something's wrong! I got an F, but I cheated off Tolkien!
 "
-22,1,SWAT officer 1," Active shooter! Active shooter! [""All units, report in"" The officer strikes various poses as he checks out the classroom. More gunshots are heard. Mrs. Nelson moves around to stay visible to the class]
+22,1,SWAT officer 1," Active shooter! Active shooter! 
 "
 22,1,Mrs. Nelson,"And now we divide, right?! Craig, how about you?! What are we dividing?!
 "
 22,1,SWAT officer 1," Active shooter! Active shooter!
 "
-22,1,Craig,"Divide four by six? [""Report now!""]
+22,1,Craig,"Divide four by six? 
 "
 22,1,Mrs. Nelson,"The four by the six?!
 "
@@ -33,7 +33,7 @@ Season,Episode,Character,Line
 "
 22,1,Kyle,"The six by the four!
 "
-22,1,SWAT officer 1,"Southwest classroom, clear! [""Copy. Southwest classroom, clear.""]
+22,1,SWAT officer 1,"Southwest classroom, clear! 
 "
 22,1,Mrs. Nelson,"Now we're gonna retake the exam on Friday.
 "
@@ -47,7 +47,7 @@ Season,Episode,Character,Line
 "
 22,1,Cartman,"You can see where Tolkien erased his answers and wrote down the right ones! He did it to me on purpose! 
 "
-22,1,Mrs. Nelson,"Eric, that's enough! [""Shooter is down, shooter is down""] Now let's move on to the next equation.
+22,1,Mrs. Nelson,"Eric, that's enough!  Now let's move on to the next equation.
 "
 22,1,Cartman,"That is such bullshit, you guys! Tolkien knew I was cheating off him, so he deliberately put down the wrong answers! Why would he do that?!
 "
@@ -279,7 +279,7 @@ Season,Episode,Character,Line
 "
 22,1,Sharon,"What? 
 "
-22,1,Doctor,"Handkerchief balls. Handkerchief out the balls. [Randy signs: "",""] Red handkerchief. [""""] No- no more handkerchief. No more- no more red. Zero. Empty. Old lady.
+22,1,Doctor,"Handkerchief balls. Handkerchief out the balls.  Red handkerchief.  No- no more handkerchief. No more- no more red. Zero. Empty. Old lady.
 "
 22,1,Sharon,"What I'm saying is that I'm so overwhelmed that I-
 "
@@ -334,11 +334,12 @@ Season,Episode,Character,Line
 22,1,Sharon,"What the fuck is going on? 
 "
 22,1,Randy,"
-
+Where do I begin
+To tell the story of how great a love can be?
 
  Surprise, Sharon
 
-
+The sweet love story that is older than the sea...
 
 
 "
@@ -359,7 +360,9 @@ Season,Episode,Character,Line
 22,1,Cartman,"In poker they call it a bluff. I know that right now, Tolkien is shitting his pants. All I need to do now is wait for the poop to stink.
 "
 22,1,Randy,"
-
+She fills my heart with very special things.
+With angel songs, with wild imaginings
+She f-
 
 
 "
@@ -811,7 +814,7 @@ Season,Episode,Character,Line
 "
 22,2,Butters,"Why?!
 "
-22,2,Fr. Maxi," Because I knew, all right?! I knew! Years ago, when bad things started coming out about the Catholic Church, I went to the Vatican and ... I found out that the problem was worse than anyone even thought. I thought I could help fix it, so, I kept my mouth shut. I thought there was cancer in the Church that we could get rid of. But the Church  cancer. It's not about a few bad apples. There are only a few good apples, and I'm clearly not one of them. So just stay away from me!
+22,2,Fr. Maxi," Because I knew, all right?! I knew! Years ago, when bad things started coming out about the Catholic Church, I went to the Vatican and ... I found out that the problem was worse than anyone even thought. I thought I could help fix it, so, I kept my mouth shut. I thought there was cancer in the Church that we could get rid of. But the Church is cancer. It's not about a few bad apples. There are only a few good apples, and I'm clearly not one of them. So just stay away from me!
 "
 22,2,Butters,"But... I thought we were pals.
 "
@@ -1052,7 +1055,8 @@ Season,Episode,Character,Line
 22,3,Kyle,"Oh. Jesus Christ, dude.
 "
 22,3,Mr. Hankey,"
-
+Santa Claus is on his way. He's loaded goodies on his sleigh.
+He'll drop them off on Christmas Day
 
 
 "
@@ -1097,7 +1101,7 @@ Season,Episode,Character,Line
 22,3,Strong Woman,"That's my water breaking. Not a big deal. 
 "
 22,3,Mr. Hankey,"
-
+Christmas time. It's Christmas time. Christmas time. Yeah, it's Christmas time
 
 .
 "
@@ -1293,7 +1297,7 @@ Season,Episode,Character,Line
 "
 22,3,Mr. Hankey,"Gee whiz. Thanks for comin' out with me, Kyle.  These days, it's like you're my only friend.  So what's the plan, huh? What you got figured out to get my job back?
 "
-22,3,Kyle,"I  a plan.  decided to call the Mayor a titless whore!
+22,3,Kyle,"I had a plan. You decided to call the Mayor a titless whore!
 "
 22,3,Mr. Hankey," Oh, it was a joke, Kyle. Sometimes, when I take Ambien, I'm really groggy and moody the next day. It's a real side effect. It's printed right on the bottle.
 "
@@ -1336,7 +1340,8 @@ Season,Episode,Character,Line
 22,3,All,"Oohhhhh!
 "
 22,3,Mr. Hankey,"
-
+Deck the halls and trim the trees, Christmas time is here.
+Gonna sing and flush our worries away. It's the best time of the year
 
 
 That's right, everybody! Who loves the holidays?  Just like when Christ was born, let's all be with our mothers and fathers and-  Let's not forget that, that boys and girls all over the world are
@@ -1372,7 +1377,7 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 "
 22,3,PC Principal,"They're so strong, like their mother.
 "
-22,3,Strong Woman,"They're so PC, like... whoever their father is. ] We'll never keep them quiet. Our only hope is to keep them hidden. 
+22,3,Strong Woman,"They're so PC, like... whoever their father is.  We'll never keep them quiet. Our only hope is to keep them hidden. 
 "
 22,3,PC Principal,"Can they ever know that I'm their dad?
 "
@@ -1437,6 +1442,21 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,4,Randy,"By growing things and, and selling what we make with our hands. We can do this, Sharon. It's time.
 "
 22,4,Randy,"
+ This ol' world is getting to me. There's just no trust, no 'tegridy.
+So I loaded up the kids, took my wife by the arm,  and I moved on out to a Colorado farm.
+Now it's early to bed, early to rise. The crops are plowed and it's no surprise
+City folks are fightin' and I don't give a darn (darn, darn)
+'Cause I make my livin' on a Colorado farm.
+I gotta drive the tractor, gotta cut the grass
+Chut-chut goes the baler like it's never gonna last
+There's food in the kitchen and there's bud in the barn. (barn, barn)
+That's life livin' on a Colorado farm.
+Ice-cold beer, pickup truck. Country music, listin' shit.
+We got tegridy to keep us warm.
+That's what you get on a Colorado farm.
+And I'm gonna stay on a Colorado farm.</i.>
+
+ Shiiit.
 "
 22,4,Kyle," So just like that? Your parents sold your house and everything?
 "
@@ -1545,7 +1565,9 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,4,Randy," All right!
 "
 22,4,Cartman,"
-
+Five, 
+$5, 
+$5 footlong.
 
 
 "
@@ -1722,19 +1744,23 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,4,Randy,"Here, just-just look. Just try it. 
 "
 22,4,Spin Doctors,"
-
+One, two
+princes kneel before you
+That's -- 
 
 
 "
 22,4,Spin Doctors,"
-
+One, two
+princes kneel before you 
 
 
 "
 22,4,Randy,"Whoa.
 "
 22,4,Spin Doctors,"
-
+That's what I said now.
+Princes -- 
 
 
 "
@@ -1871,12 +1897,17 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,4,Kyle,"Aah!
 "
 22,4,Robert Tepper,"
-
+ We're not indestructible
+Baby, better get that straight.
+I think that its unbelievable
+How you give in to the hands of fate -- 
 
 
 "
 22,4,Spin Doctors,"
-
+One, two
+princes kneel before you
+That's what I said now 
 
 
 "
@@ -1889,7 +1920,21 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,4,Patron,"Tegridy? What's tegridy? 
 "
 22,4,Spin Doctors/Robert Tepper,"
-
+That's what I said now 
+One, two --
+There's no easy way out
+That's what I said now
+One, two --
+There's no shortcut home
+That's what I said now
+One, two --
+There's no easy way out
+That's what I said now
+One, two --
+Givin' in can't be wrong
+That's what I said now 
+One, two --
+There's no easy way out
 
 
 "
@@ -1954,7 +1999,9 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,4,Butters,"Does this mean we're out of the vaping business, fellas?
 "
 22,4,Randy,"
-
+It's in you. 
+It's in me. 
+A little somethin' called tegridy.
 
 
 "
@@ -2093,7 +2140,8 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,5,Cartman,"Shouldn't have been poor, Kenny.
 "
 22,5,Mr. Mackey,"
-
+There was a wee cooper what lived in Fife. Nickety, Nackety noo noonoo
+Hey Willy Wallacky, hey John Dougal. Alane quo roshety roo rooroo
 
 
  Whoa, shit! M'kay?!  Hey, you had a goddamned red light!
@@ -2597,6 +2645,10 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 "
 22,6,Boys,"
 
+For he's a jolly good fellow.
+For he's a jolly good fellow.
+For he's a jolly good fellow.
+That should 've been President.
 
 
 "
@@ -3459,27 +3511,32 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,8,Strong Woman,"All right, Riley. Give that back to your brother.  Bailey, no!  Harper, don't! Har-per! 
 "
 22,8,All,"
-
-
-
-"
-22,8,Lead Singer,"
-
-
-
-"
-22,8,All,"
-
+PC Babies
 
 
 "
 22,8,Lead Singer,"
-
+They're comin' to your town
 
 
 "
 22,8,All,"
+PC Babies
 
+
+"
+22,8,Lead Singer,"
+The wokest kids around
+When there's something problematic
+They're sure to let you know.
+Making things fun and gender-neutral
+
+
+"
+22,8,All,"
+Everywhere they go
+They're everybody's fave-sies
+They're PC babies, yeah!
 
 
 "
@@ -3696,7 +3753,15 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,8,Strong Woman,"I guess we can wait and ban the boxes tomorrow? 
 "
 22,8,Brad Paisley,"
-
+You keep brushing that hair back out of your eyes
+And it just keeps falling and so do I
+I am feeling like the luckiest man alive
+Today
+And I don't know about tomorrow
+Right now the whole world feels right
+And the memory of a day like today
+Can get you through the rest of your 
+life
 
 
 "
@@ -3723,7 +3788,35 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,9,Linda,"Don't let that place work you to death.
 "
 22,9,Tennessee Ernie Ford,"
+Some people say a man is made outta mud
+A poor man's made outta muscle and blood
+Muscle and blood and skin and bones
+A mind that's a-weak and a back that's strong
 
+You load sixteen tons, what do you get?
+Another day older and deeper in debt
+Saint Peter don't you call me 'cause I can't go
+I owe my soul to the company store
+
+I was born one mornin' when the sun didn't shine
+I picked up my shovel and I walked to the mine
+I loaded sixteen tons of number nine coal
+And the straw boss said ""Well, a-bless my soul""
+
+You load sixteen tons, what do you get?
+Another day older and deeper in debt
+Saint Peter don't you call me 'cause I can't go
+I owe my soul to the company store
+
+I was born one mornin', it was drizzlin' rain
+Fightin' and trouble are my middle name
+I was raised in the canebrake by an ol' mama lion
+Can't no-a high-toned woman make me walk the line
+
+You load sixteen tons, what do you get?
+Another day older and deeper in debt
+Saint Peter don't you call me 'cause I can't go
+I owe my soul to the company store
 
 
 "
@@ -3802,7 +3895,11 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,9,Cartman,"Kenny, get on your mom's laptop and start ordering streamers, sparklers and rockets! Make sure everyone ships Next Day Delivery! This is gonna be just like the old times, you guys!
 "
 22,9,Irish Singers,"
-
+Workin' me fingers to the bone, 
+I need me a drink before goin' home.
+Be back in the mornin', 
+pack boxes at dawn. 
+Workin' for Amazon
 
 
 "
@@ -3891,7 +3988,22 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,9,Bezos,"Then we have an understanding.  Goodbye, Mayor. If everyone stays unfulfilled,  it will be you who pays the price. 
 "
 22,9,Trey,"
+Unfulfilled.
+And now tomorrow's nothing but another day.
+Somebody came and took my hopes and dreams away.
+and now I'm lost, and unfulfilled.
 
+Curtains close
+All we were a distant memory
+Somebody just bitch-slapped the smile right off of me.
+And here I am, so unfulfilled.
+
+The happiness I knew just got raped and killed.
+And all I am is unfulfilled.
+
+Nothing that I have seems like enough
+All I'm left to ask is, ""Where's my stuff?""
+It's sitting somewhere, unfulfilled.
 
 
 "
@@ -3920,7 +4032,12 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,9,Cartman,"Guess we haven't been to the mall in a while. 
 "
 22,9,Anita Baker,"
-
+Sweet Love
+hear me callin' out your name
+I feel no shame; 
+I'm in love
+Oh no no no no no
+(Sweet Love)
 
 
 "
@@ -4551,14 +4668,20 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,10,Bezos," Damn you, Tegridy! 
 "
 22,10,Singers,"
-
+Ice-cold beer, down-home days
+country music and bike parades
+We got Tegridy all around (round, round)
+That's life livin' in our Colorado town. 
 
 
 "
 22,10,Stan,"I guess they are offensive. 
 "
 22,10,Singers,"
-
+We don't need nothing from big corporations
+We don't need progress or fancy educations
+Maybe our tegridy keepw us down (down, down)
+But that's life livin' in our Colorado town.
 
 
 "
@@ -4567,7 +4690,10 @@ That's right, everybody! Who loves the holidays?  Just like when Christ was born
 22,10,Stephen," Sure are, Butters.
 "
 22,10,Singers,"
-
+Now we gotta learn to live without boxes every day
+We might wake up tomorrow and wonder why they went away 
+Guess you might call us a bunch of white trash hicks (hicks, hicks) 
+But at least we ain't suckin' no Bezosian dicks.
 
 
 "

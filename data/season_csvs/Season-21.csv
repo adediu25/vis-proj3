@@ -113,7 +113,7 @@ Season,Episode,Character,Line
 "
 21,1,Protesters,"Yeah! They took our jobs!
 "
-21,1,Randy,"'Kay, cool. Could you do that somewhere else? Tryin' to do a home renovation show here. Cool, thanks, guys. [goes back inside and closes the door]
+21,1,Randy,"'Kay, cool. Could you do that somewhere else? Tryin' to do a home renovation show here. Cool, thanks, guys. 
 "
 21,1,Darryl,"A home reno-what?
 "
@@ -491,7 +491,7 @@ Season,Episode,Character,Line
 "
 21,2,Cartman," Craig, let me tall you about relationships, okay?  If you don't have some fuckin' balls, you're not gonna get anywhere. Doesn't matter if they're gay balls or straight balls. If you don't take control of your side of the relationship, you get walked all over-!
 "
-21,2,Heidi,"[approaching] Hey babe, how are you doin'?
+21,2,Heidi," Hey babe, how are you doin'?
 "
 21,2,Cartman," Oh hey baby, what's going on? 
 "
@@ -641,13 +641,36 @@ Season,Episode,Character,Line
 "
 21,2,Cartman," Hey guys, let's take a minute and talk about suicide prevention. There's probably someone right now at this school thinkin' about killing himself, and it's not funny!  You'd better take him serious, or he might actually do it. 
 
+I've been feelin' sad, I've been bein' sad,
+Can't talk to my mom, don't even have a dad.
+I can't go on. What is livin' for?
+My heart screams ""I DON'T WANNA LIVE NO MORE!""
 
+Eric, we don't want you to die, Eric. Give life a try.
+Eric, we don't want you to die, Eric. Oh God no, Eric.
+I don't wanna live no more, no more, no more, no more.
+
+But Eric, we don't want you to die.
+You're so kewl, we'd be sad at school.
+
+Yeah, but you guys, you don't understand.
+With my girlfriend, it's like I'm livin' in quicksand
+Conflicting thoughts, I need a battered wife shelter.
+My girlfriend is messed up, but all I wanna do is help her.
+I'm suffocatin', I'm drowning in sorrow.
+Gonna kill myself, probably around 2:30 tomorrow.
+
+But Eric, we don't want you to die, Eric. Give life a try.
+ Everybody!
+ Eric, we don't want you to die, Eric. Oh God no, Eric.
+But it's so hard!
+Eric, we don't want you to die
 
 
 Only you guys can make a difference. I don't care if you're black, white, gay, straight, or trans, I am going to kill myself unless you all start taking it seriously!
 
 
-
+Eric, please don't die
 
 
  Distracted driving my asshole. 
@@ -771,7 +794,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,2,Tweek,"How am I supposed to calm down?! North Korea is gonna get me! They're gonna get me!
 "
-21,2,Craig," Tweek. Tweek. Tweek! 
+21,2,Craig," Tweek. Tweek. Tweek! ' Let's think this through logically. North Korea isn't going to attack anyone, okay? They're not going to start a war they can't win. Okay?
 "
 21,2,Tweek,"But Craig, I-
 "
@@ -881,7 +904,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,2,Cartman,"They're doing a memorial service with speeches and crying. What's that gonna solve?
 "
-21,2,Heidi,"It's not about problem-solving, Eric. It's about people getting together and feeling what they need to feel. [Craig's jaw drops, as he realizes this is what Tweek was trying to tell him] People need help sorting out their emotions sometimes. And the best thing isn't always quick answers, but just being there, supporting each other and... talking through those feelings.
+21,2,Heidi,"It's not about problem-solving, Eric. It's about people getting together and feeling what they need to feel.  People need help sorting out their emotions sometimes. And the best thing isn't always quick answers, but just being there, supporting each other and... talking through those feelings.
 "
 21,2,Cartman,"You are so up and down. I don't know what you want from me, Heidi!
 "
@@ -922,36 +945,40 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,2,PC Principal,"All right everyone, listen up. Tonight, one of our students has put together a song about a very important issue. It's a song about how there are certain times to not be on your phone. I hope you all listen carefully. 
 "
 21,2,Craig,"
-
+People are dying. The fault is our own.
+You can do lots of damage when you're on your phone.
+We all have to agree to change it somehow.
+Let's all make a pledge to end it right now.
 
 
 "
 21,2,Fourth grade choir,"
-
+Put it down. Don't be on your phone while being President.
+Put it down. You might do something dumb and cause an accident.
 
 
 "
 21,2,Townsfolk,"
-
+ Let's all agree, here today, that if we're leader of the U.S.A.
 
 
 "
 21,2,The parents,"
-
+We'll put it down
 
 
 "
 21,2,The Governor,"If at any point today you're being a President, put down your mobile device.
 "
 21,2,Fourth grade choir,"
-
+Put it down.
 
 
 "
 21,2,Townsman,"If I'm on the phone, I will not get behind the... desk of an oval office.
 "
 21,2,Fourth grade choir,"
-
+Put it down.
 
 
 "
@@ -962,24 +989,24 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,2,Hillary Clinton,"And I'll take the pledge.
 "
 21,2,Fourth grade choir,"
-
+No one cares.
 
 
 "
 21,2,Diner,"What's that? I was just elected President? Well then, goodbye!
 "
 21,2,Fourth grade choir,"
-
+Put it down if you're President today.
 
 
 "
 21,2,The parents,"
-
+If you find yourself being President today.
 
 
 "
 21,2,Fourth grade choir,"
-
+Ah ah ah, ah a-aaah.
 
 
 "
@@ -990,22 +1017,34 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,2,Nancy,"Right.
 "
 21,2,Fourth grade choir,"
-
+Ah ah ah, ah a-aaah, aaah. Put it down.
 
 
 "
 21,2,Cartman,"
 
+Give a standing ovation for suicide in our nation
+Or I will rip my own guts out without one hesitation 
+Dedication, that's what it's taken to awaken people to care 
+And yet my future's so hazy, my girlfriend's makin' me crazy
+But still I'm workin' so hard. You know, just tryin' to hold on, 
+'Cause I know that you'd all miss me so much if I was gone. 
+And all the voices start solo, but every day I hear them grow.
+Sayiin' ""Eric, don't do it! Don't do it! Noooo (noooo, noooo)""
 
 
 "
 21,2,Choir and parents,"
 
+Put it down. Don't be on your phone while being president.
+Put it down. You might do something dumb and cause an accident.
+We all agree, here today, that if we're leader of the U.S.A.
+We'll put it down 
 
 
 "
 21,2,Fourth grade choir,"
-
+Put it down. 
 
 
 "
@@ -1161,7 +1200,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,3,DNA test administrator,"Well, to each their own I suppose.  All right, open wide.  Okay, I'll get this back to the lab and get the results to you as quickly as possible.
 "
-21,3,Randy,"Okay, great. I'm very interested to see [begins speaking more slowly] what those results have to say.
+21,3,Randy,"Okay, great. I'm very interested to see  what those results have to say.
 "
 21,3,Peter Galtman," Galtman residence.
 "
@@ -1293,7 +1332,11 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,3,Cartman,"And when Columbus sailed to distant places only to find people already there who said ""No! Stay off our land! We want our kids to have to go to skewl!"", he said ""No! It's just one day in October! They need a break!""
 
-
+You guys can all give up, but I'm not.
+Because in 1492, Columbus got us all a day off skewl.
+With just three ships he sailed over so we could have some me time in October.
+And yes, millions were slaughtered and throats were cut
+But if we don't get that day off of school, then... for what?
 
 
 "
@@ -1729,7 +1772,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,4,Jimmy,"Yeah? Nothing illegal about us kicking your ah...ass either.
 "
-21,4,Butters,"Actually, that  illegal. And besides, you can't do anything to me. 
+21,4,Butters,"Actually, that IS illegal. And besides, you can't do anything to me. 
 "
 21,4,Mark,"Bwaaaaaa! So, this is the Coon and Friends that you have told me about.  I warn you, my fighting shtoile is unsurpassed.
 "
@@ -2250,67 +2293,68 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,5,Cartman,"All right, seniors. How are we feeling tonight? Our youth group has come to lift your spirits with some songs to take you down memory lane. We hope you can enjoy some nice old-people music. 
 "
 21,5,Cartman,"
-
+I'm... insane in the membrane.
 
 
 "
 21,5,The Boys,"
-
+Insane in the membrane.
 
 
 "
 21,5,Butters,"
-
-
-
-"
-21,5,The Boys,"
-
-
-
-"
-21,5,Cartman,"
-
-
-
-"
-21,5,Cartman,"
-
+Insane in the brain
 
 
 "
 21,5,The Boys,"
-
+Crazy insane, got no brain.
 
 
 "
 21,5,Cartman,"
+In the membrane.
 
+
+"
+21,5,Cartman,"
+Myyyy milkshake brings all the boys
 
 
 "
 21,5,The Boys,"
-
+to the yard, and they're like  it's better than yours.
 
 
 "
 21,5,Cartman,"
+Damn right!
 
+
+"
+21,5,The Boys,"
+ it's better than yours.
+
+
+"
+21,5,Cartman,"
+My hot milkshake.
 
  And now here's our own take on that oldie, but goodie by Nirvana.
 "
 21,5,The Boys,"
-
+In the cool, cool winter.
 
 
 "
 21,5,Cartman,"
-
+Rape me.
 
 
 "
 21,5,The Boys,"
-
+In the hot hot summertime.
+Rape me, my friend.
 
 
 "
@@ -2321,17 +2365,17 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,5,Elderly Man 3," Fuck you!
 "
 21,5,Cartman,"Fuck you!  
-
+If you
 
 
 "
 21,5,The Boys,"
-
+Want to call me baby
 
 
 "
 21,5,Cartman,"
-
+Just go ahead now-
 
 
 "
@@ -2356,12 +2400,13 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,5,Stan,"I know. I know.
 "
 21,5,The Boys,"
-
+No time to search the world around
+When I come around. When I come around.
 
 
 "
 21,5,Cartman,"
-
+I come around.
 
  
 "
@@ -2420,12 +2465,12 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,6,Roger,"Everyone just said sundown, which should be soon.
 "
 21,6,Gerald,"
-
+I want candy.
 
 
 "
 21,6,The Three men,"
-
+I want candy.
 
 
 "
@@ -2461,7 +2506,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,6,Cartman,"Honey, the pumpkin patch opened like an hour ago and 'member how I was saying I want to get there early?
 "
-21,6,Heidi,"[dressed in a black spider suit and orange skirt with bats on it] What do you think?
+21,6,Heidi," What do you think?
 "
 21,6,Cartman," Great, perfect. Let's go to the pumpkin patch.
 "
@@ -2485,7 +2530,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,6,Cartman," 'Kay, here we go, going to the pumpkin patch.
 "
-21,6,Heidi," Okay! Oh! I forgot my glitter lip gloss! [heads for the bathroom]
+21,6,Heidi," Okay! Oh! I forgot my glitter lip gloss! 
 "
 21,6,Cartman,"You don't need glitter lip gloss!
 "
@@ -2514,7 +2559,9 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,6,Gerald,"Everybody up the hill! 
 "
 21,6,The men,"
-
+Everybody have fun tonight
+Jack and Crack Witch Week tonight
+Everybod-
 
 
 "
@@ -2755,14 +2802,17 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,6,Stuart,"Right. Right right right. 
 "
 21,6,The men,"
-
+We're all on the same side, you and I.
+Let's all stick togetha, let's try.
+When things are going bad and there's people you need to confront.
+Just be sure it doesn't turn into a witch pursuit thing.
 
 
 "
 21,6,Stephen," Hey guys, there's good witches and there's bad witches, and we stand with you in saying this particular witch needs to be brought down. But that doesn't men we should all be closing parks and stopping all witch activity because 
 "
 21,6,The men,"
-
+Let's not turn this into a witch pursuit thing.
 
 
 "
@@ -3477,21 +3527,22 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 21,7,Kyle,"Dude... did she just call me a dirty Jew? 
 "
 21,7,"Pence, Ryan, McConnell","
-
-
-
-"
-21,7,McConnell,"Cha cha cha.
-"
-21,7,"Pence, Ryan, McConnell","
-
+Happy anniversary to you.
 
 
 "
 21,7,McConnell,"Cha cha cha.
 "
 21,7,"Pence, Ryan, McConnell","
+Happy anniversary to you.
 
+
+"
+21,7,McConnell,"Cha cha cha.
+"
+21,7,"Pence, Ryan, McConnell","
+Happy anniversary, Mr. President.
+Happy anniversary to you.
 
 
 
@@ -4195,7 +4246,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,9,Mr. Mackey,"Well, she seems to be acclimating fine, ukay, the kids really respect her.
 "
-21,9,PC Principal,"Do you know, uh, [begins to fumble on his words] Do you know if Strong Woman has a boyfriend?
+21,9,PC Principal,"Do you know, uh,  Do you know if Strong Woman has a boyfriend?
 "
 21,9,Mr. Mackey,"What??
 "
@@ -4431,7 +4482,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,9,Strong Woman,"Somebody's gonna have to open the door, or we could die out here.
 "
-21,10,Crystal,"Mommy! Momm-mmy! [her bedroom door opens and her parents walk in. Her dad flicks on the lights] He's gonna get me!
+21,10,Crystal,"Mommy! Momm-mmy!  He's gonna get me!
 "
 21,10,Bob White,"Honey, honey, who's gonna get you?
 "
@@ -4441,7 +4492,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Crystal,"But I saw him!
 "
-21,10,Bob White,"[to his wife] See what I told you? It's that liberal school she's going to, filling her head with all kinds of garbage! Sweetie, the President is doing the best job he can. Your liberal school is just trying to convince you he's dangerous.
+21,10,Bob White," See what I told you? It's that liberal school she's going to, filling her head with all kinds of garbage! Sweetie, the President is doing the best job he can. Your liberal school is just trying to convince you he's dangerous.
 "
 21,10,Crystal,"But Daddy, he's getting-
 "
@@ -4449,15 +4500,15 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Crystal,"Oh-kaaay?
 "
-21,10,Bob White,"All right. [he and Mom walk out the door, and he tells Mom] We're having a talk with that school in the morning! [turns to Crystal] Good night, honey. [turns off the lights, and the couple goes to their room. Thunder and lightning get Crystal out of bed and she goes to her window. She sees a shadow on the walkway outside. When lightning flashes, she sees it's indeed the President.]
+21,10,Bob White,"All right.  We're having a talk with that school in the morning!  Good night, honey. 
 "
-21,10,Garrison,"Hey! How are my approval ratings?! [Crystal runs back to bed]
+21,10,Garrison,"Hey! How are my approval ratings?! 
 "
-21,10,Reporter,"And the latest reports are now saying that over a million Canadians were killed in the nuclear blast. The bomb dropped by the U.S. President took out the entire city of Toronto, and fallout is expected to kill thousands more in the coming days. [A moment of silence follows, and Ike appears at Kyle's door.]
+21,10,Reporter,"And the latest reports are now saying that over a million Canadians were killed in the nuclear blast. The bomb dropped by the U.S. President took out the entire city of Toronto, and fallout is expected to kill thousands more in the coming days. 
 "
 21,10,Kyle,"Ike... Ike, I'm sorry that I caused a nuclear bomb to be dropped on Canada. I was just- you know, I was just trying to get shows that were toxic taken down. You know, those shows can be really harmful.
 "
-21,10,Ike,"Ohhh, stop being a victim! Jesus Christ! [turns left and walks away. Kyle is left with his jaw dropped, then goes back to moping]
+21,10,Ike,"Ohhh, stop being a victim! Jesus Christ! 
 "
 21,10,Bob White,"What I wanna know is, what gives you the right to preach your political views to my children?! Our daughter woke up with nightmares that the President was going to get her! Just because two liberals happen to be principal and vice principal doesn't mean you can brainwash my kids!
 "
@@ -4465,11 +4516,11 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Bob White,"It's White. Bob White. You probably never even heard of our family, huh? Well, the Whites have been here since the beginning! Not that it matters, 'cause no one cares about the Whites. Sure, everyone else has problems, but does anyone ask the Whites how they're doing?!
 "
-21,10,Strong Woman,"Mr. White, we assure you that we run this school in a very [glances at PC Principal] professional manner and don't let [glances again] personal emotions get in the way. [glances again. He looks back, and their eyes are locked]
+21,10,Strong Woman,"Mr. White, we assure you that we run this school in a very  professional manner and don't let  personal emotions get in the way. 
 "
-21,10,Bob White,"Oh, sure you don't! You know how hard I had to fight to even get this meeting with you?! ""Oh, who wants to talk to the administration? Oh, it's just the Whites? Oh, who cares about the Whites? They're fine!"" Well, we've just about had with you, you understand? [a song plays that drowns out Mr. White's rant: Barbara Mandrell - ""(If Loving You Is Wrong) I Don't Want To Be Right""] And damn it, we won't be ignored!
+21,10,Bob White,"Oh, sure you don't! You know how hard I had to fight to even get this meeting with you?! ""Oh, who wants to talk to the administration? Oh, it's just the Whites? Oh, who cares about the Whites? They're fine!"" Well, we've just about had with you, you understand?  And damn it, we won't be ignored!
 "
-21,10,Mrs. White,"[hearing the song somehow] I'm sorry, is anyone else hearing ""(If Loving You Is Wrong) I Don't Want To Be Right"" very very quietly?
+21,10,Mrs. White," I'm sorry, is anyone else hearing ""(If Loving You Is Wrong) I Don't Want To Be Right"" very very quietly?
 "
 21,10,Strong Woman," Uh, no. Mr. and Mrs. White, we promise that we will not let anything happen that might bring the integrity of this school into question.
 "
@@ -4481,19 +4532,19 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Garrison,"How are my approval ratings?
 "
-21,10,Tweek,"It's the President! Gaaahhh! [rides away quickly]
+21,10,Tweek,"It's the President! Gaaahhh! 
 "
 21,10,Garrison,"Wait, come back! What's wrong?
 "
 21,10,Bill Keegan,"Still no word from the President, as his Splatty Tomato approval rating drops to an unprecedented 3%. This puts the President four points below Nut Job 2: Nutty By Nature. Meanwhile, the Canadian Prime Minister, Justin Trudeau called upon Canadians to stand strong.
 "
-21,10,Justin Trudeau,"[stands behind a tattered podium with a Canadian flag on it.] Make no mistake, America! If you do not hand over your President, there will be war the likes of which you have never seen! Canadians will rise together! I call on all Canadians here and abroad to stand with their country! The U.S. President must answer for his crime, and only Canada can bring him to justice! [Trudeau himself was bombed, as he is charred and tattered as well. Ike, having seen the broadcast, gets angry and walks off]
+21,10,Justin Trudeau," Make no mistake, America! If you do not hand over your President, there will be war the likes of which you have never seen! Canadians will rise together! I call on all Canadians here and abroad to stand with their country! The U.S. President must answer for his crime, and only Canada can bring him to justice! 
 "
-21,10,Craig,"[pats him on the shoulder] There there, Tweek. Everything is going to be okay.
+21,10,Craig," There there, Tweek. Everything is going to be okay.
 "
 21,10,Tweek,"I saw what I saw, Craig! You have to believe me!
 "
-21,10,Kyle,"[Him and Stan walk up with their bikes] What's going on?
+21,10,Kyle," What's going on?
 "
 21,10,Craig,"Tweek's having a panic attack.
 "
@@ -4501,7 +4552,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Kyle,"Who did?
 "
-21,10,Tweek,"The President! [Stan looks away, as if Tweek's statement hit close to home]
+21,10,Tweek,"The President! 
 "
 21,10,Craig,"It's just your imagination, Tweek.
 "
@@ -4511,13 +4562,13 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Stan,"Out by the quarry. But I didn't believe it. I said, ""How could this be...""
 "
-21,10,Heidi,"...""The President?"" [Her and Cartman walk up with their bikes] I saw him too. He had a blue suit and an orange face. He kept asking me ""How are my ap...""
+21,10,Heidi,"...""The President?""  I saw him too. He had a blue suit and an orange face. He kept asking me ""How are my ap...""
 "
-21,10,Tolkien,"""...How are my approval ratings?"" [walks up with his bike] I saw him too.
+21,10,Tolkien,"""...How are my approval ratings?""  I saw him too.
 "
 21,10,Stan,"Dude, isn't this all really familiar? I saw something just like this on that show called Stranger...
 "
-21,10,Randy,"[rides up on his bike] ...Stranger Things. Stranger Things is the show. I saw it too.
+21,10,Randy," ...Stranger Things. Stranger Things is the show. I saw it too.
 "
 21,10,Craig,"But wait, isn't Stranger Things just like that movie-?
 "
@@ -4529,7 +4580,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Tolkien,"I saw Stranger Things AND It.
 "
-21,10,Randy,"Jesus. I don't think anyone's imagining anything. I think the President IS here. You kids get inside somewhere. I have to warn the town! [gets on his bike and rides off, only to fall on his face a few seconds later.] Aw!
+21,10,Randy,"Jesus. I don't think anyone's imagining anything. I think the President IS here. You kids get inside somewhere. I have to warn the town!  Aw!
 "
 21,10,Mayor McDaniels,"All right, people. People, please! We need everyone to try and stay calm.
 "
@@ -4545,11 +4596,11 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Townsfolk,"Aw! Come on! Sit down, Bob!
 "
-21,10,Bob White,"[Sits down] I'm just sayin', I'm just sayin'
+21,10,Bob White," I'm just sayin', I'm just sayin'
 "
-21,10,Mayor McDaniels,"Listen, everyone. I have a team right now that's trying to locate the President, and I'd like you to hear from Officer Bright, who's leading the search. [the officer adjusts his pants and walks up to the podium]
+21,10,Mayor McDaniels,"Listen, everyone. I have a team right now that's trying to locate the President, and I'd like you to hear from Officer Bright, who's leading the search. 
 "
-21,10,Officer Bright,"Hey folks, we know you're all uh concerned, but I wanna assure you that we're doing everything we can to track the President down and have him safely removed. Since the President was given a Splatty Tomato he's become very desperate and very dangerous. If you see the President, do not approach him. Do not try to reason with him. Most importantly, remember that this is the President, so you cannot shoot him. All right? You can't even talk about shooting him. Don't even... do any coy, satirical takes on shooting him. [the room stays silent] Okay, good. What we're trying to do here is just get the President to go away. We're gonna be handing out padlocks like this one [lifts one up for display] so everyone can lock up their garbage. If we don't feed the President, hopefully he'll just move on. Are there any questions?
+21,10,Officer Bright,"Hey folks, we know you're all uh concerned, but I wanna assure you that we're doing everything we can to track the President down and have him safely removed. Since the President was given a Splatty Tomato he's become very desperate and very dangerous. If you see the President, do not approach him. Do not try to reason with him. Most importantly, remember that this is the President, so you cannot shoot him. All right? You can't even talk about shooting him. Don't even... do any coy, satirical takes on shooting him.  Okay, good. What we're trying to do here is just get the President to go away. We're gonna be handing out padlocks like this one  so everyone can lock up their garbage. If we don't feed the President, hopefully he'll just move on. Are there any questions?
 "
 21,10,Townsman 2,"Can we talk about a friend shooting him if it's in sort of a sarcastic way?
 "
@@ -4563,7 +4614,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Tweek,"We're all going to be missing soon! Nyaaarg!
 "
-21,10,Stan,"[notices Kyle across the street walking by] Kyle! [the kids walk up to him]
+21,10,Stan," Kyle! 
 "
 21,10,Kyle,"It's my fault. Ike went to go take matters into his own hands. I have to find him.
 "
@@ -4599,7 +4650,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Waiter,"First name?
 "
-21,10,Strong Woman,"[Takes a deep breath] Strong.
+21,10,Strong Woman," Strong.
 "
 21,10,Waiter,"Oh, yes, Strong Woman, here we are. We have a nice booth set up for you.
 "
@@ -4617,13 +4668,13 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Bob White,"Aah!
 "
-21,10,Randy,"[Randy is joined by Steven, Linda, Sharon and Roger] Have you been putting food out for the president?
+21,10,Randy," Have you been putting food out for the president?
 "
 21,10,Bob White,"No, I was just, uh, taking these sandwiches to the trash.
 "
 21,10,Randy,"We all agreed not to feed him so he'd go away.
 "
-21,10,Bob White,"We didn't all agree!  all agreed! Nobody asked the Whites how they felt! Nobody cares what the Whites have to say!
+21,10,Bob White,"We didn't all agree! You all agreed! Nobody asked the Whites how they felt! Nobody cares what the Whites have to say!
 "
 21,10,Randy,"Bob, come on. You have to know it's not safe to have him here.
 "
@@ -4649,15 +4700,15 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Cartman,"Heidi? Honey, what are you doing?
 "
-21,10,Heidi,"This is the place... This is the place where I ended it all, remember? This is where I threw my phone of the bridge and quit Twitter for good. [The camera pans to the left to show Heidi's ghost] I was so different then... so naive and hopeful. [The ghost throws the phone in the river after tweeting her final goodbye]
+21,10,Heidi,"This is the place... This is the place where I ended it all, remember? This is where I threw my phone of the bridge and quit Twitter for good.  I was so different then... so naive and hopeful. 
 "
 21,10,Cartman,"Yes honey, now can we get going, please?
 "
 21,10,Heidi,"I'm sorry! I'm trying to have a moment here! This is where our whole relationship started asshole!
 "
-21,10,Cartman,"Yes, it's very touching, sweetheart. I love you so much. [Quietly] I'm sorry about this, you guys.
+21,10,Cartman,"Yes, it's very touching, sweetheart. I love you so much.  I'm sorry about this, you guys.
 "
-21,10,Heidi,"[The ghost turns to face herself] I remember feeling like I had nobody. Skinny bitch.
+21,10,Heidi," I remember feeling like I had nobody. Skinny bitch.
 "
 21,10,Kyle,"We need to keep going guys.
 "
@@ -4667,7 +4718,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Mayor McDaniels,"What?
 "
-21,10,Officer Bright,"I think we have to assume that the President has... eaten them. [Mrs Tweak starts crying]
+21,10,Officer Bright,"I think we have to assume that the President has... eaten them. 
 "
 21,10,Mayor McDaniels,"Why are you here talking to me instead of trying to find the President?
 "
@@ -4677,7 +4728,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Garrison,"Oh, Fox News... They'll listen to me. They'll get my side of the story right!
 "
-21,10,Bob White,"[He whistles the bird call of the bobwhite quail to get Garrison's attention] It's a trap!
+21,10,Bob White," It's a trap!
 "
 21,10,Garrison,"What?
 "
@@ -4693,13 +4744,13 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Tweek,"Do we really need music?
 "
-21,10,Stan,"Yeah! Craig just has the wrong stuff. Forget your pandora. I'm doing Spotify. '80s' music. 'Kay. There. [ plays]
+21,10,Stan,"Yeah! Craig just has the wrong stuff. Forget your pandora. I'm doing Spotify. '80s' music. 'Kay. There. 
 "
 21,10,Craig," Oh, yeah. That's better.
 "
 21,10,Kyle,"Can we go please?!
 "
-21,10,Kyle,"Here it is. [Opens the door] Ike?
+21,10,Kyle,"Here it is.  Ike?
 "
 21,10,Heidi,"Wait a minute... Isn't this the place you brought me before? The place you said your friends smashed your phone and computer...? I remember I felt so bad for you. We used to sit in the part and talk for hours. How come we never do that anymore?
 "
@@ -4737,7 +4788,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Strong Woman,"I told you we couldn't hide.
 "
-21,10,Randy,"But... But you two work togeth... You two work togeth... [Vomits]
+21,10,Randy,"But... But you two work togeth... You two work togeth... 
 "
 21,10,Officer Bright,"Hey, what the hell's going on?!
 "
@@ -4747,25 +4798,25 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Steven,"They can't be together! They're co-workers!
 "
-21,10,Offier Bright,"Wait, wait. You mean he's actually her superior and they were in there... [Gags, then vomits]
+21,10,Offier Bright,"Wait, wait. You mean he's actually her superior and they were in there... 
 "
-21,10,Bob White,"Who would want to put their penis in a co-worker?! [Gags then vomits. Everyone else starts doing the same]
+21,10,Bob White,"Who would want to put their penis in a co-worker?! 
 "
 21,10,Kyle,"Oh, my God! Look! These are Ike's toy binoculars! He was here! Ike!
 "
 21,10,Heidi,"I remember this place too... This is where you brought me on Halloween. Remember?
 "
-21,10,Cartman,"[Sarcastically] Yes, darling, wasn't it romantic?
+21,10,Cartman," Yes, darling, wasn't it romantic?
 "
-21,10,Heidi,"No! It wasn't romantic. There was a witch and you had me dress up like Gretel and... [gasps] you were trying to get me killed!
+21,10,Heidi,"No! It wasn't romantic. There was a witch and you had me dress up like Gretel and...  you were trying to get me killed!
 "
 21,10,Cartman,"Sweetheart, you made me late to the pumpkin patch, remember? I was hurt.
 "
-21,10,Heidi," were hurt!  Were the victim.
+21,10,Heidi,"You were hurt! You Were the victim.
 "
 21,10,Cartman,"I'm glad you understand.
 "
-21,10,Heidi,"[Heidi's ghost appears]  Shut up! Skinny-ass bitch! You don't know anything!
+21,10,Heidi," Who turned you into this, Heidi? Shut up! Skinny-ass bitch! You don't know anything!
 "
 21,10,Cartman,"Heidi, I think spooky walk in the woods is making you lost it a little bit.
 "
@@ -4781,21 +4832,21 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Sharon,"Randy! Did you find anything?
 "
-21,10,Randy,"[He takes off his hood] Sharon... I... I...
+21,10,Randy," Sharon... I... I...
 "
 21,10,Sharon,"What is it? What did you find?
 "
 21,10,Randy,"The... There's... Ugh...
 "
-21,10,Sharon,"Tell me! You have to tell me! [Officer Bright takes off his hat] Oh, God! What did you see?!
+21,10,Sharon,"Tell me! You have to tell me!  Oh, God! What did you see?!
 "
 21,10,Randy,"You don't want to know.
 "
 21,10,Sharon,"You have to tell me! I can take it! Did you find our son's arm? Did you find him torn apart? What?!
 "
-21,10,Randy,"The Principal and Vice Principal are, like... together. [Sharon vomits right onto Randy's face.] Aw!
+21,10,Randy,"The Principal and Vice Principal are, like... together.  Aw!
 "
-21,10,Officer Bright,"It's the President! [People begin to cheer]
+21,10,Officer Bright,"It's the President! 
 "
 21,10,Sheila,"Ike! Kyle!
 "
@@ -4803,7 +4854,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Stan,"Yeah, we're okay!
 "
-21,10,Officer Bright,"We got him. We got the son of a bitch. [Bob White walks over and grabs Officer Bright's gun]
+21,10,Officer Bright,"We got him. We got the son of a bitch. 
 "
 21,10,Bob White,"Get back! Everyone back! Do it now! Get over here, family!
 "
@@ -4811,15 +4862,15 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Bob White,"You wanna know where there's a war?! There's a war on Christmas! Nobody cares about that! 'Cos guess who loves Christmas? The Whites! At least this man's trying to save Christmas!
 "
-21,10,Garrison,"[Muffled] That's true!
+21,10,Garrison," That's true!
 "
 21,10,Randy,"He's not saving Christmas, Bob. He's running around scaring your kids and shitting in the woods.
 "
-21,10,Bob White,"[Sighs, sobs]
+21,10,Bob White,"
 "
 21,10,Randy,"Come on, Bob. What's best for your daughter? I mean, really?
 "
-21,10,Heidi,"[Heidi grabs White's gun] You piece of shit! This was all your fault! [She points the gun at Cartman] You controlled me and manipulated me and turned me into this!
+21,10,Heidi," You piece of shit! This was all your fault!  You controlled me and manipulated me and turned me into this!
 "
 21,10,Cartman,"Baby, put down the gun, sweetheart, okay?
 "
@@ -4833,7 +4884,7 @@ Only you guys can make a difference. I don't care if you're black, white, gay, s
 "
 21,10,Heidi,"Yes, I am. It's over.
 "
-21,10,Cartman,"I'm afraid I can't let you do that, sweetheart! [He grabs the gun and points it at himself] Step back! I'll do it I swear to God!
+21,10,Cartman,"I'm afraid I can't let you do that, sweetheart!  Step back! I'll do it I swear to God!
 "
 21,10,Heidi,"It's not gonna work this time, Eric.
 "

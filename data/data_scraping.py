@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests as rq
 import csv
-import regex
+import re
 
 season_urls = {
     20:"https://southpark.fandom.com/wiki/Portal:Scripts/Season_Twenty",
@@ -50,13 +50,16 @@ def parse_episode(episode_url, season, episode):
             script_line['Episode'] = episode
             script_line['Character'] = ch_span.text
 
+            # regular expression will remove anything within brackets
+            script_line['Line'] = re.sub("\[.*?\]", "", line.text)
+
             # character actions are wrapped in <i> tags
             # this removes them from each line
-            actions = line.find_all('i')
-            for action in actions:
-                action.extract()
+            # actions = line.find_all('i')
+            # for action in actions:
+            #     action.extract()
+            # script_line['Line'] = line.text
 
-            script_line['Line'] = line.text
             script_lines.append(script_line)
 
     return script_lines
