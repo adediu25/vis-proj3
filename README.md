@@ -1,2 +1,5 @@
-# vis-proj3
- Repository for Project 3 in Engineering Interactive Visual Interfaces for Data Science
+# South Park Script Analysis
+
+**Built by Alexandru Dediu, Andrew Gerstenslager, Nick Murray and Zach Carlson**
+
+[Live Webpage](https://adediu25.github.io/vis-proj3/).
