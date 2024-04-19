@@ -1,24 +1,31 @@
 let data; // Declare data as a global variable
-
+let linkCount = 3; // Initial value for link count
+let topPercentage = 10; // Initial value for top percentage
 
 // Load CSV file and process data
 Promise.all([
     d3.csv('data/season_csvs/Season-1.csv')
 ]).then(loadedData => {
     data = loadedData[0]; // Assign the loaded data to the global variable
-    createForceGraph(data, 3); // Using only the first CSV for simplicity
+    createForceGraph(data); // Using only the first CSV for simplicity
 }).catch(error => console.error(error));
-
 
 // Add event listener for slider
 document.getElementById('link-slider').addEventListener('input', function(event) {
-    const linkCount = event.target.value;
+    linkCount = event.target.value;
     document.getElementById('link-count').textContent = linkCount;
-    createForceGraph(data, linkCount); // Update the graph with the new link count
+    createForceGraph(data); // Update the graph with the new link count
+});
+
+// Add event listener for percentage slider
+document.getElementById('percentage-slider').addEventListener('input', function(event) {
+    topPercentage = event.target.value;
+    document.getElementById('percentage-count').textContent = topPercentage;
+    createForceGraph(data); // Update the graph with the new top percentage
 });
 
 
-function createForceGraph(data, linkCount) {
+function createForceGraph(data) {
     const container = d3.select('#graph-container');
     container.selectAll('*').remove(); // Clear the container
     const nodes = [], allLinks = [];
@@ -32,9 +39,9 @@ function createForceGraph(data, linkCount) {
         characterFrequency.set(entry.Character, (characterFrequency.get(entry.Character) || 0) + 1);
     });
 
-    // Determine the top 10% of characters by frequency
+    // Determine the top topPercentage of characters by frequency
     const frequencies = Array.from(characterFrequency.values()).sort((a, b) => b - a);
-    const cutoffIndex = Math.floor(frequencies.length * 0.1);
+    const cutoffIndex = Math.floor(frequencies.length * (topPercentage / 100));
     const frequencyCutoff = frequencies[cutoffIndex];
 
     // Process data to construct nodes and links
@@ -86,15 +93,14 @@ function createForceGraph(data, linkCount) {
     });
 
     const width = 600, height = 600;
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
-
-    
         
     // Set up simulation
     const simulation = d3.forceSimulation(nodes)
         .force("link", d3.forceLink(links).id(d => d.id).distance(150))
         .force("charge", d3.forceManyBody().strength(-50))
-        .force("center", d3.forceCenter(width / 2, height / 2));
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("x", d3.forceX(width / 2).strength(0.1))
+        .force("y", d3.forceY(height / 2).strength(0.1));
 
     const svg = container.append('svg')
         .attr('width', width)
@@ -115,6 +121,7 @@ function createForceGraph(data, linkCount) {
     nodes.forEach(node => {
         node.totalFrequency = characterFrequency.get(node.id);
     });
+    console.log(nodes);
 
     const nodeSizeScale = d3.scaleLinear()
         .domain(d3.extent(nodes, node => node.totalFrequency))
@@ -124,13 +131,23 @@ function createForceGraph(data, linkCount) {
         .domain(d3.extent(nodes, node => node.totalFrequency))
         .range(['#FFC0C0', '#8B0000']);
 
-    const node = svg.append("g")
+        const node = svg.append("g")
         .attr("class", "nodes")
         .selectAll("circle")
         .data(nodes)
         .enter().append("circle")
         .attr("r", node => nodeSizeScale(node.totalFrequency))
         .attr("fill", node => nodeColorScale(node.totalFrequency))
+        .on("mouseover", function(d) {
+            //console.log(d.srcElement.__data__); 
+            d3.select(this).attr("fill", "blue"); 
+        })
+        .on("mouseout", function(d) { 
+            d3.select(this).attr("fill", nodeColorScale(d.srcElement.__data__.totalFrequency)); 
+        })
+        .on("click", function(d) {
+            console.log(d.srcElement.__data__.id);
+        })
         .call(drag(simulation));
 
     node.append("title")
