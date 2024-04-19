@@ -1,5 +1,8 @@
-let season_csvs
+let data; // Declare data as a global variable
+let stopwords; // Declare stopwords as a global variable
+let characterInfo = [];
 
+// Load CSV file and process data
 Promise.all([
     d3.csv('data/season_csvs/Season-1.csv'),
     d3.csv('data/season_csvs/Season-2.csv'),
@@ -27,8 +30,75 @@ Promise.all([
     d3.csv('data/season_csvs/Season-24.csv'),
     d3.csv('data/season_csvs/Season-25.csv'),
     d3.csv('data/season_csvs/Season-26.csv'),
-]).then((_data) => {
-    season_csvs = _data;
-    console.log(season_csvs[0]);
-})
-.catch(error => console.error(error));
+]).then(loadedData => {
+    data = loadedData.flat(); // Flatten the array of arrays into a single array
+    
+    // Process each line to be just the words as a list
+    data = data.map(d => {
+        d.words = filterStopwordsAndPunctuation(d.Line);
+        return d;
+    });
+    
+
+    let dataIndex = 0; // Add this line before the forEach loop
+
+    data.forEach(d => {
+        // Find the existing entry for the character
+        let characterEntry = characterInfo.find(entry => entry.character === d.Character);
+        
+        // If the character doesn't exist in the inverted index data yet, create a new entry
+        if (!characterEntry) {
+            characterEntry = {
+                character: d.Character,
+                inverted_index: {},
+                season_episode_pairs: []
+            };
+            characterInfo.push(characterEntry);
+        }
+        
+        // Update the inverted index and season_episode_pairs
+        let wordCounts = d.words.reduce((counts, word) => {
+            counts[word] = (counts[word] || 0) + 1;
+            return counts;
+        }, {});
+        Object.entries(wordCounts).forEach(([word, count]) => {
+            if (!characterEntry.inverted_index[word]) {
+                characterEntry.inverted_index[word] = [];
+            }
+            characterEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+        });
+        let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
+        let existingPair = characterEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
+        if (existingPair) {
+            existingPair.dialogues++;
+        } else {
+            characterEntry.season_episode_pairs.push(pair);
+        }
+    
+        dataIndex++; // Increment dataIndex at the end of the loop
+    });
+
+    createForceGraph(data); 
+    console.log(data);
+    console.log(characterInfo);
+
+    // Get the 4th character's info
+    let characterEntry = characterInfo[3];
+
+    // Get the entries of the inverted_index object and sort them by total frequency
+    let sortedWords = Object.entries(characterEntry.inverted_index).sort((a, b) => {
+        let totalFrequencyA = a[1].reduce((total, {frequency}) => total + frequency, 0);
+        let totalFrequencyB = b[1].reduce((total, {frequency}) => total + frequency, 0);
+        return totalFrequencyB - totalFrequencyA;
+    });
+
+    // Take the top 10 most used words
+    let topWords = sortedWords.slice(0, 10);
+
+    console.log(`The most used words by ${characterEntry.character} are:`);
+    topWords.forEach(([word, occurrences]) => {
+        let totalFrequency = occurrences.reduce((total, {frequency}) => total + frequency, 0);
+        console.log(`${word}: ${totalFrequency} times`);
+    });
+}).catch(error => console.error(error));
+
