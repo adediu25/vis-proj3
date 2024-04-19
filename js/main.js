@@ -1,8 +1,5 @@
 let data; // Declare data as a global variable
 let stopwords; // Declare stopwords as a global variable
-let linkCount = 3; // Initial value for link count
-let topPercentage = 10; // Initial value for top percentage
-let forceStrength = 50; // Initial value for force strength
 
 // Load stopwords from CSV file
 d3.csv('data/stopwords.csv', d => d['stop_word']).then(loadedStopwords => {
@@ -54,23 +51,3 @@ Promise.all([
     console.log(data);
 }).catch(error => console.error(error));
 
-// Add event listener for slider
-document.getElementById('link-slider').addEventListener('input', function(event) {
-    linkCount = event.target.value;
-    document.getElementById('link-count').textContent = linkCount;
-    createForceGraph(data);
-});
-
-// Add event listener for percentage slider
-document.getElementById('percentage-slider').addEventListener('input', function(event) {
-    topPercentage = event.target.value;
-    document.getElementById('percentage-count').textContent = topPercentage;
-    createForceGraph(data); // Update the graph with the new top percentage
-});
-
-// Add event listener for force slider
-document.getElementById('force-slider').addEventListener('input', function(event) {
-    forceStrength = event.target.value;
-    document.getElementById('force-count').textContent = forceStrength;
-    createForceGraph(data); // Update the graph with the new force strength
-});

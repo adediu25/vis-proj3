@@ -1,3 +1,22 @@
+let topPercentage = 1; // Initial value for top percentage
+let forceStrength = 50; // Initial value for force strength
+let linkCount = 3; // Initial value for link count
+
+// Add event listener for slider
+document.getElementById('link-slider').addEventListener('input', function(event) {
+    linkCount = event.target.value;
+    document.getElementById('link-count').textContent = linkCount;
+    createForceGraph(data);
+});
+
+// Add event listener for percentage slider
+document.getElementById('percentage-slider').addEventListener('input', function(event) {
+    topPercentage = event.target.value;
+    document.getElementById('percentage-count').textContent = topPercentage;
+    createForceGraph(data); // Update the graph with the new top percentage
+});
+
+
 function createForceGraph(data) {
     const container = d3.select('#force-graph-container');
     container.selectAll('*').remove(); // Clear the container
@@ -16,7 +35,7 @@ function createForceGraph(data) {
     const frequencies = Array.from(characterFrequency.values()).sort((a, b) => b - a);
     const cutoffIndex = Math.floor(frequencies.length * (topPercentage / 100));
     const frequencyCutoff = frequencies[cutoffIndex];
-
+    //console.log(frequencyCutoff);
     // Process data to construct nodes and links
     data.forEach(entry => {
         if (characterFrequency.get(entry.Character) >= frequencyCutoff) {
