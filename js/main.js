@@ -118,7 +118,7 @@ function createForceGraph(data, linkCount) {
 
     const nodeSizeScale = d3.scaleLinear()
         .domain(d3.extent(nodes, node => node.totalFrequency))
-        .range([5, 20]);
+        .range([5, 15]);
     
     const nodeColorScale = d3.scaleLinear()
         .domain(d3.extent(nodes, node => node.totalFrequency))
