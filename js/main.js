@@ -57,11 +57,15 @@ Promise.all([
         }
         
         // Update the inverted index and season_episode_pairs
-        d.words.forEach((word) => { // Remove index from here
+        let wordCounts = d.words.reduce((counts, word) => {
+            counts[word] = (counts[word] || 0) + 1;
+            return counts;
+        }, {});
+        Object.entries(wordCounts).forEach(([word, count]) => {
             if (!characterEntry.inverted_index[word]) {
                 characterEntry.inverted_index[word] = [];
             }
-            characterEntry.inverted_index[word].push(dataIndex); // Push dataIndex instead of index
+            characterEntry.inverted_index[word].push({index: dataIndex, frequency: count});
         });
         let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
         let existingPair = characterEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
@@ -70,12 +74,31 @@ Promise.all([
         } else {
             characterEntry.season_episode_pairs.push(pair);
         }
-
+    
         dataIndex++; // Increment dataIndex at the end of the loop
     });
 
     createForceGraph(data); 
     console.log(data);
     console.log(characterInfo);
+
+    // Get the 4th character's info
+    let characterEntry = characterInfo[3];
+
+    // Get the entries of the inverted_index object and sort them by total frequency
+    let sortedWords = Object.entries(characterEntry.inverted_index).sort((a, b) => {
+        let totalFrequencyA = a[1].reduce((total, {frequency}) => total + frequency, 0);
+        let totalFrequencyB = b[1].reduce((total, {frequency}) => total + frequency, 0);
+        return totalFrequencyB - totalFrequencyA;
+    });
+
+    // Take the top 10 most used words
+    let topWords = sortedWords.slice(0, 10);
+
+    console.log(`The most used words by ${characterEntry.character} are:`);
+    topWords.forEach(([word, occurrences]) => {
+        let totalFrequency = occurrences.reduce((total, {frequency}) => total + frequency, 0);
+        console.log(`${word}: ${totalFrequency} times`);
+    });
 }).catch(error => console.error(error));
 
