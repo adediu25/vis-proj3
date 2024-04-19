@@ -69,8 +69,8 @@ function createForceGraph(data) {
         
     // Set up simulation
     const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(150))
-        .force("charge", d3.forceManyBody().strength(-50))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(150)) // Modify the strength of the links based on the value of the force slider
+        .force("charge", d3.forceManyBody().strength(-forceStrength))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("x", d3.forceX(width / 2).strength(0.1))
         .force("y", d3.forceY(height / 2).strength(0.1));
@@ -96,9 +96,9 @@ function createForceGraph(data) {
     });
     //&console.log(nodes);
 
-    const nodeSizeScale = d3.scaleLinear()
+    const nodeSizeScale = d3.scalePow().exponent(0.05)
         .domain(d3.extent(nodes, node => node.totalFrequency))
-        .range([5, 15]);
+        .range([5, 20]);
     
     const nodeColorScale = d3.scaleLinear()
         .domain(d3.extent(nodes, node => node.totalFrequency))
@@ -126,17 +126,17 @@ function createForceGraph(data) {
     node.append("title")
         .text(d => d.id);
 
-    simulation.on("tick", () => {
-        link
-            .attr("x1", d => d.source.x)
-            .attr("y1", d => d.source.y)
-            .attr("x2", d => d.target.x)
-            .attr("y2", d => d.target.y);
-
-        node
-            .attr("cx", d => d.x)
-            .attr("cy", d => d.y);
-    });
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+        
+            node
+                .attr("cx", d => Math.max(nodeSizeScale(d.totalFrequency), Math.min(width - nodeSizeScale(d.totalFrequency), d.x)))
+                .attr("cy", d => Math.max(nodeSizeScale(d.totalFrequency), Math.min(height - nodeSizeScale(d.totalFrequency), d.y)));
+        });
 
     // Print links information
     // console.log("Link Details:");
