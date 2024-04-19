@@ -1,21 +1,6 @@
 let data; // Declare data as a global variable
 let stopwords; // Declare stopwords as a global variable
-
-// Load stopwords from CSV file
-d3.csv('data/stopwords.csv', d => d['stop_word']).then(loadedStopwords => {
-    stopwords = loadedStopwords;
-
-    // Print a sentence and then print it without stopwords
-    let sentence = 'This is a test sentence';
-    console.log('Original sentence:', sentence);
-
-    let words = sentence.toLowerCase().split(' ');
-    let filteredWords = words.filter(word => !stopwords.includes(word));
-    let filteredSentence = filteredWords.join(' ');
-
-    console.log('Sentence without stopwords:', filteredSentence);
-}).catch(error => console.error(error));
-
+let characterInfo = [];
 
 // Load CSV file and process data
 Promise.all([
@@ -47,7 +32,46 @@ Promise.all([
     d3.csv('data/season_csvs/Season-26.csv'),
 ]).then(loadedData => {
     data = loadedData.flat(); // Flatten the array of arrays into a single array
+    
+    // Process each line to be just the words as a list
+    data = data.map(d => {
+        d.words = filterStopwordsAndPunctuation(d.Line);
+        return d;
+    });
+    
+
+    data.forEach(d => {
+        // Find the existing entry for the character
+        let characterEntry = characterInfo.find(entry => entry.character === d.Character);
+    
+        // If the character doesn't exist in the inverted index data yet, create a new entry
+        if (!characterEntry) {
+            characterEntry = {
+                character: d.Character,
+                inverted_index: {},
+                season_episode_pairs: []
+            };
+            characterInfo.push(characterEntry);
+        }
+    
+        // Update the inverted index and season_episode_pairs
+        d.words.forEach((word, index) => {
+            if (!characterEntry.inverted_index[word]) {
+                characterEntry.inverted_index[word] = [];
+            }
+            characterEntry.inverted_index[word].push(index);
+        });
+        let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
+        let existingPair = characterEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
+        if (existingPair) {
+            existingPair.dialogues++;
+        } else {
+            characterEntry.season_episode_pairs.push(pair);
+        }
+    });
+
     createForceGraph(data); 
     console.log(data);
+    console.log(characterInfo);
 }).catch(error => console.error(error));
 
