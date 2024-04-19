@@ -40,10 +40,12 @@ Promise.all([
     });
     
 
+    let dataIndex = 0; // Add this line before the forEach loop
+
     data.forEach(d => {
         // Find the existing entry for the character
         let characterEntry = characterInfo.find(entry => entry.character === d.Character);
-    
+        
         // If the character doesn't exist in the inverted index data yet, create a new entry
         if (!characterEntry) {
             characterEntry = {
@@ -53,13 +55,13 @@ Promise.all([
             };
             characterInfo.push(characterEntry);
         }
-    
+        
         // Update the inverted index and season_episode_pairs
-        d.words.forEach((word, index) => {
+        d.words.forEach((word) => { // Remove index from here
             if (!characterEntry.inverted_index[word]) {
                 characterEntry.inverted_index[word] = [];
             }
-            characterEntry.inverted_index[word].push(index);
+            characterEntry.inverted_index[word].push(dataIndex); // Push dataIndex instead of index
         });
         let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
         let existingPair = characterEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
@@ -68,6 +70,8 @@ Promise.all([
         } else {
             characterEntry.season_episode_pairs.push(pair);
         }
+
+        dataIndex++; // Increment dataIndex at the end of the loop
     });
 
     createForceGraph(data); 
