@@ -10,6 +10,7 @@ function createForceGraph(data) {
     const characterMap = new Map(); // To track character indices
     const characterFrequency = new Map(); // To count occurrences
     let lastCharacter = null;
+    const link_range = [1, 50]
 
     // Calculate frequency of each character
     data.forEach(entry => {
@@ -45,31 +46,49 @@ function createForceGraph(data) {
         }
     });
 
-    // Print links information
-    console.log("Link Details:");
+    
+    
+    // Normalize link strength
+    const maxLinkValue = d3.max(links, d => d.value);
+    const linkStrengthScale = d3.scaleLinear()
+        .domain([0, maxLinkValue])
+        .range(link_range);
+
+    // Create a color scale for link strength
+    const linkColorScale = d3.scaleLinear()
+        .domain(link_range)
+        .range(['#FFC0C0', '#8B0000']);
+
     links.forEach(link => {
-        console.log(`Link between ${link.source.id} and ${link.target.id} with strength ${link.value}`);
+        link.normalizedValue = linkStrengthScale(link.value);
     });
 
-    // Visualization with d3-force
-    const width = 1200, height = 1200;
+    const width = 600, height = 600;
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
+    
+        
+    // Set up simulation
     const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.value / 15))
-        .force("charge", d3.forceManyBody().strength(-0))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(150))
+        .force("charge", d3.forceManyBody().strength(-50))
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     const svg = d3.select("body").append("svg")
         .attr("width", width)
         .attr("height", height);
 
+    // Sort links by strength in descending order
+    links.sort((b, a) => b.normalizedValue - a.normalizedValue);
+
+
     const link = svg.append("g")
         .attr("stroke", "#999")
         .selectAll("line")
         .data(links)
         .join("line")
-        .attr("stroke-width", d => Math.sqrt(d.value));
+        .attr("stroke-width", d => Math.sqrt(d.normalizedValue))  // Use normalized value for stroke width
+        .attr("stroke", d => linkColorScale(d.normalizedValue));  // Color scale can also reflect normalized value
 
     const node = svg.append("g")
         .attr("stroke", "#fff")
@@ -84,7 +103,6 @@ function createForceGraph(data) {
     node.append("title")
         .text(d => d.id);
 
-    // Tick function for graph dynamics
     simulation.on("tick", () => {
         link
             .attr("x1", d => d.source.x)
@@ -95,6 +113,12 @@ function createForceGraph(data) {
         node
             .attr("cx", d => d.x)
             .attr("cy", d => d.y);
+    });
+
+    // Print links information
+    console.log("Link Details:");
+    links.forEach(link => {
+        console.log(`Link between ${link.source.id} and ${link.target.id} with strength ${link.value}`);
     });
 
     function drag(simulation) {
