@@ -1,16 +1,31 @@
+let data; // Declare data as a global variable
+
+
 // Load CSV file and process data
 Promise.all([
     d3.csv('data/season_csvs/Season-1.csv')
-]).then(data => {
-    createForceGraph(data[0]); // Using only the first CSV for simplicity
+]).then(loadedData => {
+    data = loadedData[0]; // Assign the loaded data to the global variable
+    createForceGraph(data, 3); // Using only the first CSV for simplicity
 }).catch(error => console.error(error));
 
-function createForceGraph(data) {
-    const nodes = [], links = [];
+
+// Add event listener for slider
+document.getElementById('link-slider').addEventListener('input', function(event) {
+    const linkCount = event.target.value;
+    document.getElementById('link-count').textContent = linkCount;
+    createForceGraph(data, linkCount); // Update the graph with the new link count
+});
+
+
+function createForceGraph(data, linkCount) {
+    const container = d3.select('#graph-container');
+    container.selectAll('*').remove(); // Clear the container
+    const nodes = [], allLinks = [];
     const characterMap = new Map(); // To track character indices
     const characterFrequency = new Map(); // To count occurrences
     let lastCharacter = null;
-    const link_range = [1, 50]
+    const link_range = [0,50];
 
     // Calculate frequency of each character
     data.forEach(entry => {
@@ -35,15 +50,22 @@ function createForceGraph(data) {
                 const target = characterMap.get(entry.Character);
 
                 // Find existing link or create a new one
-                const existingLink = links.find(l => (l.source.id === source.id && l.target.id === target.id) || (l.source.id === target.id && l.target.id === source.id));
+                const existingLink = allLinks.find(l => (l.source.id === source.id && l.target.id === target.id) || (l.source.id === target.id && l.target.id === source.id));
                 if (existingLink) {
                     existingLink.value++;
                 } else {
-                    links.push({ source, target, value: 1 });
+                    allLinks.push({ source, target, value: 1 });
                 }
             }
             lastCharacter = entry.Character;
         }
+    });
+
+    const links = [];
+    allLinks.sort((a, b) => b.value - a.value);
+    nodes.forEach(node => {
+        const topLinks = allLinks.filter(link => link.source.id === node.id || link.target.id === node.id).slice(0, linkCount);
+        links.push(...topLinks);
     });
 
     
@@ -74,9 +96,9 @@ function createForceGraph(data) {
         .force("charge", d3.forceManyBody().strength(-50))
         .force("center", d3.forceCenter(width / 2, height / 2));
 
-    const svg = d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height", height);
+    const svg = container.append('svg')
+        .attr('width', width)
+        .attr('height', height);
 
     // Sort links by strength in descending order
     links.sort((b, a) => b.normalizedValue - a.normalizedValue);
@@ -90,14 +112,25 @@ function createForceGraph(data) {
         .attr("stroke-width", d => Math.sqrt(d.normalizedValue))  // Use normalized value for stroke width
         .attr("stroke", d => linkColorScale(d.normalizedValue));  // Color scale can also reflect normalized value
 
+    nodes.forEach(node => {
+        node.totalFrequency = characterFrequency.get(node.id);
+    });
+
+    const nodeSizeScale = d3.scaleLinear()
+        .domain(d3.extent(nodes, node => node.totalFrequency))
+        .range([5, 20]);
+    
+    const nodeColorScale = d3.scaleLinear()
+        .domain(d3.extent(nodes, node => node.totalFrequency))
+        .range(['#FFC0C0', '#8B0000']);
+
     const node = svg.append("g")
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1.5)
+        .attr("class", "nodes")
         .selectAll("circle")
         .data(nodes)
-        .join("circle")
-        .attr("r", 5)
-        .attr("fill", d => color(d.group))
+        .enter().append("circle")
+        .attr("r", node => nodeSizeScale(node.totalFrequency))
+        .attr("fill", node => nodeColorScale(node.totalFrequency))
         .call(drag(simulation));
 
     node.append("title")
@@ -116,10 +149,10 @@ function createForceGraph(data) {
     });
 
     // Print links information
-    console.log("Link Details:");
-    links.forEach(link => {
-        console.log(`Link between ${link.source.id} and ${link.target.id} with strength ${link.value}`);
-    });
+    // console.log("Link Details:");
+    // links.forEach(link => {
+    //     console.log(`Link between ${link.source.id} and ${link.target.id} with strength ${link.value}`);
+    // });
 
     function drag(simulation) {
         function dragstarted(event) {
