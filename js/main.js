@@ -85,7 +85,7 @@ Promise.all([
     // Get the 4th character's info
     let characterEntry = characterInfo[3];
     let wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry, data.length);    // Get the entries of the inverted_index object and sort them by total frequency
-    
+    setCharacterImage(characterEntry.character);
 
     // Take the top 10 most used words
     
@@ -107,3 +107,55 @@ function print_character_top_words(characterEntry){
     });
 
 };
+
+let name = characterName.outerText;
+function setCharacterImage(name) {
+    const characterImageElement = document.getElementById('character-image');
+    switch (name.toLowerCase()) {
+        case 'cartman':
+            characterImageElement.src = 'images/cartman.jpg';
+            break;
+        case 'kyle':
+            characterImageElement.src = 'images/kyle.jpg';
+            break;
+        case 'stan':
+            characterImageElement.src = 'images/stan.jpg';
+            break;
+        case 'kenny':
+            characterImageElement.src = 'images/kenny.jpg';
+            break;
+        case 'butters':
+            characterImageElement.src = 'images/butters.jpg';
+            break;
+        case 'chef':
+            characterImageElement.src = 'images/chef.jpg';
+            break;
+        case 'clyde':
+            characterImageElement.src = 'images/clyde.jpg';
+            break;
+        case 'ike':
+            characterImageElement.src = 'images/ike.jpg';
+            break;
+        case 'jimmy':
+            characterImageElement.src = 'images/jimmy.jpg';
+            break;
+        case 'mr. garrison':
+            characterImageElement.src = 'images/mrGarrison.jpg';
+            break;
+        case 'mr. mackey':
+            characterImageElement.src = 'images/mrMackey.jpg';
+            break;
+        case 'randy':
+            characterImageElement.src = 'images/randy.jpg';
+            break;
+        case 'token':
+            characterImageElement.src = 'images/tolkien.jpg';
+            break;
+        case 'wendy':
+            characterImageElement.src = 'images/wendy.jpg';
+            break;
+        default:
+            characterImageElement.src = 'images/cartman.jpg';
+            break;
+    }
+}
