@@ -139,6 +139,14 @@ function createForceGraph(data) {
         })
         .on("click", function(d) {
             console.log(d.srcElement.__data__.id);
+            const characterName = d.srcElement.__data__.id;
+            const characterEntry = characterInfo.find(entry => entry.character === characterName);
+            if (characterEntry) {
+                console.log(characterEntry);
+                get_character_name(characterEntry);
+                renderInvertedIndex(characterEntry.inverted_index);
+            }
+            
         })
         .call(drag(simulation));
 
