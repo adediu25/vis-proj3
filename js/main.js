@@ -84,15 +84,20 @@ Promise.all([
 
     // Get the 4th character's info
     let characterEntry = characterInfo[3];
+    let wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry, data.length);    // Get the entries of the inverted_index object and sort them by total frequency
+    
 
-    // Get the entries of the inverted_index object and sort them by total frequency
+    // Take the top 10 most used words
+    
+}).catch(error => console.error(error));
+
+function print_character_top_words(characterEntry){
+
     let sortedWords = Object.entries(characterEntry.inverted_index).sort((a, b) => {
         let totalFrequencyA = a[1].reduce((total, {frequency}) => total + frequency, 0);
         let totalFrequencyB = b[1].reduce((total, {frequency}) => total + frequency, 0);
         return totalFrequencyB - totalFrequencyA;
     });
-
-    // Take the top 10 most used words
     let topWords = sortedWords.slice(0, 10);
 
     console.log(`The most used words by ${characterEntry.character} are:`);
@@ -100,5 +105,5 @@ Promise.all([
         let totalFrequency = occurrences.reduce((total, {frequency}) => total + frequency, 0);
         console.log(`${word}: ${totalFrequency} times`);
     });
-}).catch(error => console.error(error));
 
+};

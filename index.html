@@ -14,20 +14,25 @@
             <label for="link-slider">Number of links per character: <span id="link-count">3</span></label>
         </div>
         <div id="percentage-slider-container">
-            <input type="range" min="1" max="100" value="1" id="percentage-slider" />
-            <label for="percentage-slider">Top percentage of characters: <span id="percentage-count">1</span>%</label>
+            <input type="range" id="percentage-slider" min="0.1" max="5" step="0.1" value="0.3">            <label for="percentage-slider">Top percentage of characters: <span id="percentage-count">0.3</span>%</label>
         </div>
    
         <div id="force-graph-container"></div>
+    </div>
+    <div id="wordcloud-parent">
+        <h1 id="characterName">cartman</h1>
+        <div id="wordcloud"></div>
     </div>
     
     <!-- libraries -->
 
     <script src="js/d3.v6.min.js"></script>
-    
+    <script src="https://unpkg.com/d3-cloud"></script>
+
     <!-- Our JS code-->
     <script src="js/textprocessing.js"></script>
     <script src="js/forcegraph.js"></script>
+    <script src="js/wordcloud.js"></script>
     <script src="js/main.js"></script>
     
     

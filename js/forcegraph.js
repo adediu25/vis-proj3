@@ -1,4 +1,4 @@
-let topPercentage = 1; // Initial value for top percentage
+let topPercentage = 0.3; // Initial value for top percentage
 let forceStrength = 50; // Initial value for force strength
 let linkCount = 3; // Initial value for link count
 
@@ -25,6 +25,14 @@ function createForceGraph(data) {
     const characterFrequency = new Map(); // To count occurrences
     let lastCharacter = null;
     const link_range = [0,50];
+    const tooltip = d3.select("#force-graph-container")
+        .append("div")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
+        .style("background", "#fff")
+        .style("border", "1px solid #000")
+        .style("padding", "5px");
+
 
     // Calculate frequency of each character
     data.forEach(entry => {
@@ -88,8 +96,8 @@ function createForceGraph(data) {
         
     // Set up simulation
     const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(150)) // Modify the strength of the links based on the value of the force slider
-        .force("charge", d3.forceManyBody().strength(-forceStrength))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(75)) // Modify the strength of the links based on the value of the force slider
+        .force("charge", d3.forceManyBody().strength(-10 *forceStrength))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("x", d3.forceX(width / 2).strength(0.1))
         .force("y", d3.forceY(height / 2).strength(0.1));
@@ -130,20 +138,31 @@ function createForceGraph(data) {
         .enter().append("circle")
         .attr("r", node => nodeSizeScale(node.totalFrequency))
         .attr("fill", node => nodeColorScale(node.totalFrequency))
-        .on("mouseover", function(d) {
-            //console.log(d.srcElement.__data__); 
+        .on("mouseover", function(event, d) {
+            tooltip.style("visibility", "visible")
+                .style("left", event.pageX + "px") // set the horizontal position
+                .style("top", event.pageY + "px") // set the vertical position
+                .html(`Character: ${d.id}<br>Frequency: ${d.totalFrequency}`);
             d3.select(this).attr("fill", "blue"); 
         })
-        .on("mouseout", function(d) { 
-            d3.select(this).attr("fill", nodeColorScale(d.srcElement.__data__.totalFrequency)); 
+        .on("mouseout", function(event, d) { 
+            tooltip.style("visibility", "hidden");
+            d3.select(this).attr("fill", nodeColorScale(d.totalFrequency)); 
         })
-        .on("click", function(d) {
-            console.log(d.srcElement.__data__.id);
+        .on("click", function(event, d) {
+            console.log(d.id);
+            const characterName = d.id;
+            const characterEntry = characterInfo.find(entry => entry.character === characterName);
+            if (characterEntry) {
+                print_character_top_words(characterEntry);
+                renderInvertedIndex(characterEntry);
+            }
+            
         })
         .call(drag(simulation));
 
     node.append("title")
-        .text(d => d.id);
+        //.text(d => d.id);
 
         simulation.on("tick", () => {
             link
