@@ -101,21 +101,21 @@ class WordCloud {
                 .attr("text-anchor", "middle")
                 .attr("transform", d => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
                 .text(d => d.text)
-            .on("mouseover", function(event, d) {
-                d3.select(event.target).style('fill', 'blue');
-                // Show the tooltip with the frequency of the word
-                tooltip.style("visibility", "visible")
-                    .style("left", event.pageX + "px") // set the horizontal position
-                    .style("top", event.pageY + "px") // set the vertical position
-                    .text("Frequency: " + d.frequency);
-            })
-            .on("mouseout", (event, d) => { // Use arrow function here
-                // Hide the tooltip
-                d3.select(event.target).style('fill', this.colorScale(d.size));
-                tooltip.style("visibility", "hidden");
-            })
-            .on("click", d => { 
-                //pass
-            });
+                .on("mouseover", function(event, d) {
+                    d3.select(event.target).style('fill', 'blue');
+                    // Show the tooltip with the word and its frequency
+                    tooltip.style("visibility", "visible")
+                        .style("left", event.pageX + "px") // set the horizontal position
+                        .style("top", event.pageY + "px") // set the vertical position
+                        .html("Word: " + d.text + "<br/>Frequency: " + d.frequency);
+                })
+                .on("mouseout", (event, d) => { // Use arrow function here
+                    // Hide the tooltip
+                    d3.select(event.target).style('fill', this.colorScale(d.size));
+                    tooltip.style("visibility", "hidden");
+                })
+                .on("click", d => { 
+                    //pass
+                });
     }
 }
