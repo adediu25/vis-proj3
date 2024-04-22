@@ -11,6 +11,9 @@ function renderInvertedIndex(characterEntry, parentElement) {
         d3.select(parentElement+'-name').text("Season "+characterEntry.character);
     }
 
+    // Set the character's image
+    setCharacterImage(characterEntry.character);
+
     // Create a new WordCloud instance and draw it
     const wordCloud = new WordCloud({parentElement: parentElement}, characterEntry);
 }
