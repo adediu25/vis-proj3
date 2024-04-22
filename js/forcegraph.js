@@ -25,6 +25,14 @@ function createForceGraph(data) {
     const characterFrequency = new Map(); // To count occurrences
     let lastCharacter = null;
     const link_range = [0,50];
+    const tooltip = d3.select("#force-graph-container")
+        .append("div")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
+        .style("background", "#fff")
+        .style("border", "1px solid #000")
+        .style("padding", "5px");
+
 
     // Calculate frequency of each character
     data.forEach(entry => {
@@ -130,28 +138,31 @@ function createForceGraph(data) {
         .enter().append("circle")
         .attr("r", node => nodeSizeScale(node.totalFrequency))
         .attr("fill", node => nodeColorScale(node.totalFrequency))
-        .on("mouseover", function(d) {
-            //console.log(d.srcElement.__data__); 
+        .on("mouseover", function(event, d) {
+            tooltip.style("visibility", "visible")
+                .style("left", event.pageX + "px") // set the horizontal position
+                .style("top", event.pageY + "px") // set the vertical position
+                .html(`Character: ${d.id}<br>Frequency: ${d.totalFrequency}`);
             d3.select(this).attr("fill", "blue"); 
         })
-        .on("mouseout", function(d) { 
-            d3.select(this).attr("fill", nodeColorScale(d.srcElement.__data__.totalFrequency)); 
+        .on("mouseout", function(event, d) { 
+            tooltip.style("visibility", "hidden");
+            d3.select(this).attr("fill", nodeColorScale(d.totalFrequency)); 
         })
-        .on("click", function(d) {
-            console.log(d.srcElement.__data__.id);
-            const characterName = d.srcElement.__data__.id;
+        .on("click", function(event, d) {
+            console.log(d.id);
+            const characterName = d.id;
             const characterEntry = characterInfo.find(entry => entry.character === characterName);
             if (characterEntry) {
-                console.log(characterEntry);
-                get_character_name(characterEntry);
-                renderInvertedIndex(characterEntry.inverted_index);
+                print_character_top_words(characterEntry);
+                renderInvertedIndex(characterEntry);
             }
             
         })
         .call(drag(simulation));
 
     node.append("title")
-        .text(d => d.id);
+        //.text(d => d.id);
 
         simulation.on("tick", () => {
             link
