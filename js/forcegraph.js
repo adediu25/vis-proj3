@@ -1,4 +1,4 @@
-let topPercentage = 1; // Initial value for top percentage
+let topPercentage = 0.3; // Initial value for top percentage
 let forceStrength = 50; // Initial value for force strength
 let linkCount = 3; // Initial value for link count
 
@@ -96,8 +96,8 @@ function createForceGraph(data) {
         
     // Set up simulation
     const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(150)) // Modify the strength of the links based on the value of the force slider
-        .force("charge", d3.forceManyBody().strength(-forceStrength))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(75)) // Modify the strength of the links based on the value of the force slider
+        .force("charge", d3.forceManyBody().strength(-10 *forceStrength))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("x", d3.forceX(width / 2).strength(0.1))
         .force("y", d3.forceY(height / 2).strength(0.1));
