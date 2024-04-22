@@ -138,7 +138,7 @@ function createForceGraph(data) {
         .join("circle")
         .attr("r", node => nodeSizeScale(node.totalFrequency))
         .attr("fill", node => nodeColorScale(node.totalFrequency))
-        .on("mousemove", function(event, d) {
+        .on("mouseover", function(event, d) {
             tooltip.style("visibility", "visible")
                 .style("left", event.pageX + "px") // set the horizontal position
                 .style("top", event.pageY + "px") // set the vertical position

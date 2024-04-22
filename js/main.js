@@ -199,7 +199,6 @@ function print_character_top_words(characterEntry){
 
 };
 
-let name = characterName.outerText;
 function setCharacterImage(name) {
     const characterImageElement = document.getElementById('character-image');
     switch (name.toLowerCase()) {
