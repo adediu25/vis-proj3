@@ -174,11 +174,11 @@ d3.select("#season-select").on("input", function(){
 
     if (season === "All") {
         renderInvertedIndex(allInfo,'#allcloud');
-        document.getElementById('char-profanity-name').innerText = "Profanity by Characer All Seasons";
+        document.getElementById('char-profanity-name').innerText = "Profanity by Character All Seasons";
     }
     else {
         renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud');
-        document.getElementById('char-profanity-name').innerText = "Profanity by Characer Season " + season;
+        document.getElementById('char-profanity-name').innerText = "Profanity by Character Season " + season;
     }
 });
 
