@@ -2,19 +2,98 @@
 <html>
 <head>
     <title>Project 3</title>
-    <h1><center>Project 3</center></h1>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/South_park_sign.svg/860px-South_park_sign.svg.png" style="width: 300px; height: 300px;">
+        <h1>"South Park" is an animated television series created by Trey Parker and Matt Stone that premiered in 1997. Known for its satirical 
+            and often controversial humor, the show revolves around four boys—Eric Cartman, Stan Marsh, Kyle Broflovski, and Kenny McCormick (as respectively shown below)—and 
+            their bizarre adventures in the small town of South Park, Colorado. "South Park" is famous for its crude animation style, dark comedy, 
+            and its approach to tackling a wide range of topics, often addressing social issues, celebrity culture, and current events with a distinctively 
+            disrespectful tone. The series employs a fast production schedule, allowing it to remain particularly topical by addressing issues that are very 
+            current, making it a unique blend of comedy and commentary. There are currently 26 seasons (327 episodes) of "South Park" with almost no end in sight even with
+            the numerous times it has been target by "cancel culture."
+        </h1>
+        <img src="https://pngimg.com/d/south_park_PNG20.png" style="width: 800px; height: 200px;">
+
+    </div>
     <!-- Page Elements -->
+    <label for="seasonSelect">Select Season:</label>
+    <select id="seasonSelect">
+        <option value="All">All Seasons</option>
+        <option value="1">Season 1</option>
+        <option value="2">Season 2</option>
+        <option value="3">Season 3</option>
+        <option value="4">Season 4</option>
+        <option value="5">Season 5</option>
+        <option value="6">Season 6</option>
+        <option value="7">Season 7</option>
+        <option value="8">Season 8</option>
+        <option value="9">Season 9</option>
+        <option value="10">Season 10</option>
+        <option value="11">Season 11</option>
+        <option value="12">Season 12</option>
+        <option value="13">Season 13</option>
+        <option value="14">Season 14</option>
+        <option value="15">Season 15</option>
+        <option value="16">Season 16</option>
+        <option value="17">Season 17</option>
+        <option value="18">Season 18</option>
+        <option value="19">Season 19</option>
+        <option value="20">Season 20</option>
+        <option value="21">Season 21</option>
+        <option value="22">Season 22</option>
+        <option value="23">Season 23</option>
+        <option value="24">Season 24</option>
+        <option value="25">Season 25</option>
+        <option value="26">Season 26</option>
+    </select>
+
+    <div id="bar-chart"></div>
+
+    <label for="seasonSelect2">Select Season:</label>
+    <select id="seasonSelect2">
+        <option value="All">All Seasons</option>
+        <option value="1">Season 1</option>
+        <option value="2">Season 2</option>
+        <option value="3">Season 3</option>
+        <option value="4">Season 4</option>
+        <option value="5">Season 5</option>
+        <option value="6">Season 6</option>
+        <option value="7">Season 7</option>
+        <option value="8">Season 8</option>
+        <option value="9">Season 9</option>
+        <option value="10">Season 10</option>
+        <option value="11">Season 11</option>
+        <option value="12">Season 12</option>
+        <option value="13">Season 13</option>
+        <option value="14">Season 14</option>
+        <option value="15">Season 15</option>
+        <option value="16">Season 16</option>
+        <option value="17">Season 17</option>
+        <option value="18">Season 18</option>
+        <option value="19">Season 19</option>
+        <option value="20">Season 20</option>
+        <option value="21">Season 21</option>
+        <option value="22">Season 22</option>
+        <option value="23">Season 23</option>
+        <option value="24">Season 24</option>
+        <option value="25">Season 25</option>
+        <option value="26">Season 26</option>
+    </select>
     
+    <div id="bar-chart2"></div>
     <!-- libraries -->
 
     <script src="js/d3.v6.min.js"></script>
 
     <!-- Our JS code-->
     
+    <script src="js/barChart.js"></script>
+    <script src="js/episodesChart.js"></script>
     <script src="js/main.js"></script>
     
     
