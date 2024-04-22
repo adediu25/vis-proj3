@@ -79,20 +79,25 @@ Promise.all([
     });
 
     createForceGraph(data); 
-    console.log(data);
-    console.log(characterInfo);
+    // console.log(data);
+    // console.log(characterInfo);
 
     // Get the 4th character's info
     let characterEntry = characterInfo[3];
+    let wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry, data.length);    // Get the entries of the inverted_index object and sort them by total frequency
+    setCharacterImage(characterEntry.character);
 
-    // Get the entries of the inverted_index object and sort them by total frequency
+    // Take the top 10 most used words
+    
+}).catch(error => console.error(error));
+
+function print_character_top_words(characterEntry){
+
     let sortedWords = Object.entries(characterEntry.inverted_index).sort((a, b) => {
         let totalFrequencyA = a[1].reduce((total, {frequency}) => total + frequency, 0);
         let totalFrequencyB = b[1].reduce((total, {frequency}) => total + frequency, 0);
         return totalFrequencyB - totalFrequencyA;
     });
-
-    // Take the top 10 most used words
     let topWords = sortedWords.slice(0, 10);
 
     console.log(`The most used words by ${characterEntry.character} are:`);
@@ -100,5 +105,153 @@ Promise.all([
         let totalFrequency = occurrences.reduce((total, {frequency}) => total + frequency, 0);
         console.log(`${word}: ${totalFrequency} times`);
     });
-}).catch(error => console.error(error));
 
+};
+
+let name = characterName.outerText;
+function setCharacterImage(name) {
+    const characterImageElement = document.getElementById('character-image');
+    switch (name.toLowerCase()) {
+        case 'cartman':
+            characterImageElement.src = 'images/cartman.jpg';
+            break;
+        case 'kyle':
+            characterImageElement.src = 'images/kyle.jpg';
+            break;
+        case 'stan':
+            characterImageElement.src = 'images/stan.jpg';
+            break;
+        case 'kenny':
+            characterImageElement.src = 'images/kenny.jpg';
+            break;
+        case 'butters':
+            characterImageElement.src = 'images/butters.jpg';
+            break;
+        case 'chef':
+            characterImageElement.src = 'images/chef.jpg';
+            break;
+        case 'clyde':
+            characterImageElement.src = 'images/clyde.jpg';
+            break;
+        case 'ike':
+            characterImageElement.src = 'images/ike.jpg';
+            break;
+        case 'jimmy':
+            characterImageElement.src = 'images/jimmy.jpg';
+            break;
+        case 'mr. garrison':
+            characterImageElement.src = 'images/mrGarrison.jpg';
+            break;
+        case 'garrison':
+            characterImageElement.src = 'images/mrGarrison.jpg';
+            break;
+        case 'mr. mackey':
+            characterImageElement.src = 'images/mrMackey.jpg';
+            break;
+        case 'randy':
+            characterImageElement.src = 'images/randy.jpg';
+            break;
+        case 'token':
+            characterImageElement.src = 'images/tolkien.jpg';
+            break;
+        case 'tolkien':
+            characterImageElement.src = 'images/tolkien.jpg';
+            break;
+        case 'wendy':
+            characterImageElement.src = 'images/wendy.jpg';
+            break;
+        case 'gerald':
+            characterImageElement.src = 'images/gerald.jpg';
+            break;
+        case 'sharon':
+            characterImageElement.src = 'images/sharon.jpg';
+            break;
+        case 'sheila':
+            characterImageElement.src = 'images/sheila.jpg';
+            break;
+        case 'liane':
+            characterImageElement.src = 'images/liane.jpg';
+            break;
+        case 'craig':
+            characterImageElement.src = 'images/craig.jpg';
+            break;
+        case 'stephen':
+            characterImageElement.src = 'images/stephen.jpg';
+            break;
+        case 'linda':
+            characterImageElement.src = 'images/linda.jpg';
+            break;
+        case 'tweek':
+            characterImageElement.src = 'images/tweek.jpg';
+            break;
+        case 'announcer':
+            characterImageElement.src = 'images/announcer.jpg';
+            break;
+        case 'pc principal':
+            characterImageElement.src = 'images/pcPrincipal.jpg';
+            break;
+        case 'heidi':
+            characterImageElement.src = 'images/heidi.jpg';
+            break;
+        case 'jimbo':
+            characterImageElement.src = 'images/jimbo.jpg';
+            break;
+        case 'jesus':
+            characterImageElement.src = 'images/jesus.jpg';
+            break;
+        case 'principal victoria':
+            characterImageElement.src = 'images/principalVictoria.jpg';
+            break;
+        case 'scott':
+            characterImageElement.src = 'images/scott.jpg';
+            break;
+        case 'mayor':
+            characterImageElement.src = 'images/mayor.jpg';
+            break;
+        case 'mrs. garrison':
+            characterImageElement.src = 'images/mrsGarrison.jpg';
+            break;
+        case 'terrance':
+            characterImageElement.src = 'images/terranceAndPhillip.jpg';
+            break;
+        case 'phillip':
+            characterImageElement.src = 'images/terranceAndPhillip.jpg';
+            break;
+        case 'shelly':
+            characterImageElement.src = 'images/shelly.jpg';
+            break;
+        case 'bebe':
+            characterImageElement.src = 'images/bebe.jpg';
+            break;
+        case 'mr. hankey':
+            characterImageElement.src = 'images/mrHankey.jpg';
+            break;
+        case 'stuart':
+            characterImageElement.src = 'images/stuart.jpg';
+            break;
+        case 'pip':
+            characterImageElement.src = 'images/pip.jpg';
+            break;
+        case 'michael':
+            characterImageElement.src = 'images/michael.jpg';
+            break;
+        case 'yates':
+            characterImageElement.src = 'images/yates.jpg';
+            break;
+        case 'satan':
+            characterImageElement.src = 'images/satan.jpg';
+            break;
+        case 'timmy':
+            characterImageElement.src = 'images/timmy.jpg';
+            break;
+        case 'santa':
+            characterImageElement.src = 'images/santa.jpg';
+            break;
+        case 'towelie':
+            characterImageElement.src = 'images/towelie.jpg';
+            break;
+        default:
+            characterImageElement.src = 'images/cartman.jpg';
+            break;
+    }
+}
