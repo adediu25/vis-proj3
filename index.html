@@ -84,16 +84,29 @@
         <option value="25">Season 25</option>
         <option value="26">Season 26</option>
     </select>
+    <div id = "force-graph-parent">
+        <div id="slider-container">
+            <input type="range" min="1" max="10" value="3" id="link-slider" />
+            <label for="link-slider">Number of links per character: <span id="link-count">3</span></label>
+        </div>
+        <div id="percentage-slider-container">
+            <input type="range" min="1" max="100" value="1" id="percentage-slider" />
+            <label for="percentage-slider">Top percentage of characters: <span id="percentage-count">1</span>%</label>
+        </div>
+   
+        <div id="force-graph-container"></div>
+    </div>
     
     <div id="bar-chart2"></div>
     <!-- libraries -->
 
     <script src="js/d3.v6.min.js"></script>
-
-    <!-- Our JS code-->
     
     <script src="js/barChart.js"></script>
     <script src="js/episodesChart.js"></script>
+    <!-- Our JS code-->
+    <script src="js/textprocessing.js"></script>
+    <script src="js/forcegraph.js"></script>
     <script src="js/main.js"></script>
     
     
