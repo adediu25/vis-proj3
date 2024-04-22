@@ -18,3 +18,5 @@ function filterStopwordsAndPunctuation(sentence) {
 d3.csv('data/stopwords.csv', d => d['stop_word']).then(loadedStopwords => {
     stopwords = loadedStopwords;
 }).catch(error => console.error(error));
+
+d3.json('data/profanity.json').then(d => profanity=d).catch(error => console.error(error))
