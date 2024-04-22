@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         drawChart('All');
 
         // Setup event listener for the dropdown
-        document.getElementById('seasonSelect2').addEventListener('change', function() {
+        document.getElementById('season-select').addEventListener('change', function() {
             const season = this.value;
             drawChart(season);
         });
