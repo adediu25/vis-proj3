@@ -127,18 +127,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add the x Axis with a label
             svg.append("g")
                 .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x))
-                .append("text")
+                .call(d3.axisBottom(x));
+
+            svg.append("text")
                 .attr("class", "label")
                 .attr("x", width / 2)
-                .attr("y", 50)
+                .attr("y", width / 2)
                 .style("text-anchor", "middle")
                 .text("Character");
 
             // Add the y Axis with a label
             svg.append("g")
-                .call(d3.axisLeft(y))
-                .append("text")
+                .call(d3.axisLeft(y));
+
+            svg.append("text")
                 .attr("class", "label")
                 .attr("transform", "rotate(-90)")
                 .attr("y", -50)
