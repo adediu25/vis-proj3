@@ -155,7 +155,7 @@ function createForceGraph(data) {
             const characterEntry = characterInfo.find(entry => entry.character === characterName);
             if (characterEntry) {
                 print_character_top_words(characterEntry);
-                renderInvertedIndex(characterEntry);
+                renderInvertedIndex(characterEntry, '#wordcloud');
             }
             
         })

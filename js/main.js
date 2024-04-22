@@ -137,6 +137,16 @@ Promise.all([
     
 }).catch(error => console.error(error));
 
+d3.select("#season-select").on("input", function(){
+    let season = +this.value;
+    if (season === "All") {
+        renderInvertedIndex(allInfo,'#allcloud') 
+    }
+    else {
+        renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud')
+    }
+});
+
 function print_character_top_words(characterEntry){
 
     let sortedWords = Object.entries(characterEntry.inverted_index).sort((a, b) => {

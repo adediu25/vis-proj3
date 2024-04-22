@@ -1,13 +1,18 @@
-function renderInvertedIndex(characterEntry) {
+function renderInvertedIndex(characterEntry, parentElement) {
     // Clear the previous content
-    const container = d3.select('#wordcloud');
+    const container = d3.select(parentElement);
     container.selectAll('*').remove();
 
     // Update the character's name
-    d3.select('#characterName').text(characterEntry.character);
+    if (parentElement == "#wordcloud") {
+        d3.select(parentElement+'-name').text(characterEntry.character);
+    }
+    else {
+        d3.select(parentElement+'-name').text("Season "+characterEntry.character);
+    }
 
     // Create a new WordCloud instance and draw it
-    const wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry);
+    const wordCloud = new WordCloud({parentElement: parentElement}, characterEntry);
 }
 
 
@@ -93,7 +98,7 @@ class WordCloud {
                 .attr("text-anchor", "middle")
                 .attr("transform", d => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
                 .text(d => d.text)
-            .on("mousemove", function(event, d) {
+            .on("mouseover", function(event, d) {
                 d3.select(event.target).style('fill', 'blue');
                 // Show the tooltip with the frequency of the word
                 tooltip.style("visibility", "visible")
@@ -101,7 +106,7 @@ class WordCloud {
                     .style("top", event.pageY + "px") // set the vertical position
                     .text("Frequency: " + d.frequency);
             })
-            .on("mouseleave", (event, d) => { // Use arrow function here
+            .on("mouseout", (event, d) => { // Use arrow function here
                 // Hide the tooltip
                 d3.select(event.target).style('fill', this.colorScale(d.size));
                 tooltip.style("visibility", "hidden");
