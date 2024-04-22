@@ -1,16 +1,21 @@
-function renderInvertedIndex(characterEntry) {
+function renderInvertedIndex(characterEntry, parentElement) {
     // Clear the previous content
-    const container = d3.select('#wordcloud');
+    const container = d3.select(parentElement);
     container.selectAll('*').remove();
 
     // Update the character's name
-    d3.select('#characterName').text(characterEntry.character);
+    if (parentElement == "#wordcloud") {
+        d3.select(parentElement+'-name').text(characterEntry.character);
+    }
+    else {
+        d3.select(parentElement+'-name').text("Season "+characterEntry.character);
+    }
 
     // Set the character's image
     setCharacterImage(characterEntry.character);
 
     // Create a new WordCloud instance and draw it
-    const wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry);
+    const wordCloud = new WordCloud({parentElement: parentElement}, characterEntry);
 }
 
 

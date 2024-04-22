@@ -1,6 +1,11 @@
 let data; // Declare data as a global variable
 let stopwords; // Declare stopwords as a global variable
+let profanity;
 let characterInfo = [];
+let seasonInfo = [];
+let allInfo = {character:'All', inverted_index:{}, season_episode_pairs: []};
+// chart objects
+let profanityChart;
 
 // Load CSV file and process data
 Promise.all([
@@ -33,6 +38,8 @@ Promise.all([
 ]).then(loadedData => {
     data = loadedData.flat(); // Flatten the array of arrays into a single array
     
+    unfilteredData = data;
+
     // Process each line to be just the words as a list
     data = data.map(d => {
         d.words = filterStopwordsAndPunctuation(d.Line);
@@ -45,15 +52,26 @@ Promise.all([
     data.forEach(d => {
         // Find the existing entry for the character
         let characterEntry = characterInfo.find(entry => entry.character === d.Character);
+        let seasonEntry = seasonInfo.find(entry => entry.character === d.Season);
         
         // If the character doesn't exist in the inverted index data yet, create a new entry
         if (!characterEntry) {
             characterEntry = {
                 character: d.Character,
                 inverted_index: {},
-                season_episode_pairs: []
+                season_episode_pairs: [],
+                episode_profanity_pairs: []
             };
             characterInfo.push(characterEntry);
+        }
+
+        if (!seasonEntry) {
+            seasonEntry = {
+                character: d.Season,
+                inverted_index: {},
+                season_episode_pairs: []
+            };
+            seasonInfo.push(seasonEntry);
         }
         
         // Update the inverted index and season_episode_pairs
@@ -62,20 +80,75 @@ Promise.all([
             return counts;
         }, {});
         Object.entries(wordCounts).forEach(([word, count]) => {
+            // characters
             if (!characterEntry.inverted_index[word]) {
                 characterEntry.inverted_index[word] = [];
             }
             characterEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+
+            // seasons
+            if (!seasonEntry.inverted_index[word]) {
+                seasonEntry.inverted_index[word] = [];
+            }
+            seasonEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+
+            // all
+            if (!allInfo.inverted_index[word]) {
+                allInfo.inverted_index[word] = [];
+            }
+            allInfo.inverted_index[word].push({index: dataIndex, frequency: count});
         });
         let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
+
+        let profanityCount = d.words.reduce((total,word) => {
+            return profanity.includes(word) ? total+1 : total;
+        }, 0)
+        let profanityPair = {season: d.Season, episode: d.Episode, profanity: profanityCount}
+
+        // update season episode pairs
+        // characters
         let existingPair = characterEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
         if (existingPair) {
             existingPair.dialogues++;
         } else {
             characterEntry.season_episode_pairs.push(pair);
         }
-    
+
+        // seasons
+        existingPair = seasonEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
+        if (existingPair) {
+            existingPair.dialogues++;
+        } else {
+            seasonEntry.season_episode_pairs.push(pair);
+        }
+
+        // all
+        existingPair = allInfo.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
+        if (existingPair) {
+            existingPair.dialogues++;
+        } else {
+            allInfo.season_episode_pairs.push(pair);
+        }
+
+        let existingProfanity = characterEntry.episode_profanity_pairs.find(e => e.episode === profanityPair.season && e.season === profanityPair.season);
+        if (existingProfanity){
+            existingProfanity.profanity++;
+        } else {
+            characterEntry.episode_profanity_pairs.push(profanityPair);
+        }
+
         dataIndex++; // Increment dataIndex at the end of the loop
+    });
+
+    // count profanity
+    characterInfo.forEach(characterEntry => {
+        let seasonCounts = characterEntry.episode_profanity_pairs.reduce((counts, pair) => {
+            counts["All"] = counts["All"] ? counts["All"]+pair.profanity : pair.profanity;
+            counts[pair.season] = counts[pair.season] ? counts[pair.season]+pair.profanity : pair.profanity;
+            return counts;
+        }, {});
+
+        characterEntry.seasonProfanityCount = seasonCounts;
     });
 
     createForceGraph(data); 
@@ -85,11 +158,29 @@ Promise.all([
     // Get the 4th character's info
     let characterEntry = characterInfo[3];
     let wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry, data.length);    // Get the entries of the inverted_index object and sort them by total frequency
+    let allCloud = new WordCloud({parentElement: '#allcloud'}, allInfo, data.length);
+    profanityChart = new ProfanityChart({parentElement: '#char-profanity'}, characterInfo);
     setCharacterImage(characterEntry.character);
 
     // Take the top 10 most used words
     
 }).catch(error => console.error(error));
+
+d3.select("#season-select").on("input", function(){
+    let season = +this.value;
+
+    profanityChart.season = season;
+    profanityChart.updateVis();
+
+    if (season === "All") {
+        renderInvertedIndex(allInfo,'#allcloud');
+        document.getElementById('char-profanity-name').innerText = "Profanity by Characer All Seasons";
+    }
+    else {
+        renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud');
+        document.getElementById('char-profanity-name').innerText = "Profanity by Characer Season " + season;
+    }
+});
 
 function print_character_top_words(characterEntry){
 
