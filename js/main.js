@@ -3,7 +3,9 @@ let stopwords; // Declare stopwords as a global variable
 let profanity;
 let characterInfo = [];
 let seasonInfo = [];
-let allInfo = {character:'All', inverted_index:{}, season_episode_pairs: []}
+let allInfo = {character:'All', inverted_index:{}, season_episode_pairs: []};
+// chart objects
+let profanityChart;
 
 // Load CSV file and process data
 Promise.all([
@@ -138,6 +140,17 @@ Promise.all([
         dataIndex++; // Increment dataIndex at the end of the loop
     });
 
+    // count profanity
+    characterInfo.forEach(characterEntry => {
+        let seasonCounts = characterEntry.episode_profanity_pairs.reduce((counts, pair) => {
+            counts["All"] = counts["All"] ? counts["All"]+pair.profanity : pair.profanity;
+            counts[pair.season] = counts[pair.season] ? counts[pair.season]+pair.profanity : pair.profanity;
+            return counts;
+        }, {});
+
+        characterEntry.seasonProfanityCount = seasonCounts;
+    });
+
     createForceGraph(data); 
     console.log(data);
     console.log(characterInfo);
@@ -146,6 +159,7 @@ Promise.all([
     let characterEntry = characterInfo[3];
     let wordCloud = new WordCloud({parentElement: '#wordcloud'}, characterEntry, data.length);    // Get the entries of the inverted_index object and sort them by total frequency
     let allCloud = new WordCloud({parentElement: '#allcloud'}, allInfo, data.length);
+    profanityChart = new ProfanityChart({parentElement: '#char-profanity'}, characterInfo);
 
     // Take the top 10 most used words
     
@@ -153,11 +167,17 @@ Promise.all([
 
 d3.select("#season-select").on("input", function(){
     let season = +this.value;
+
+    profanityChart.season = season;
+    profanityChart.updateVis();
+
     if (season === "All") {
-        renderInvertedIndex(allInfo,'#allcloud') 
+        renderInvertedIndex(allInfo,'#allcloud');
+        document.getElementById('char-profanity-name').innerText = "Profanity by Characer All Seasons";
     }
     else {
-        renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud')
+        renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud');
+        document.getElementById('char-profanity-name').innerText = "Profanity by Characer Season " + season;
     }
 });
 

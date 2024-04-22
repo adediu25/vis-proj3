@@ -5,8 +5,8 @@ class ProfanityChart {
         // you might want to use getter and setter methods for individual attributes
         this.config = {
           parentElement: _config.parentElement,
-          containerWidth: _config.containerWidth || 400,
-          containerHeight: _config.containerHeight || 300,
+          containerWidth: _config.containerWidth || 700,
+          containerHeight: _config.containerHeight || 400,
           margin: _config.margin || {top: 20, right: 5, bottom: 20, left: 50},
           tooltipPadding: _config.tooltipPadding || 10,
         }
@@ -73,21 +73,16 @@ class ProfanityChart {
     updateVis() {
         let vis = this;
 
-        vis.data.forEach(characterEntry => {
-            characterEntry.totalProfanity = 0;
-            if (vis.season === "All") {
-                characterEntry.totalProfanity = characterEntry.episode_profanity_pairs.reduce((total, pair) => total+=pair.profanity,0);
-            } else {
-                characterEntry.totalProfanity = characterEntry.episode_profanity_pairs.reduce((total, pair) => {
-                    return pair.season === vis.season ? total+=pair.profanity : total;
-                },0);
-            }
-        });
+        // filters out characters that do not appear in the season
+        let filtered = vis.data.filter(d => d.seasonProfanityCount[vis.season]);
 
-        console.log(vis.data);
+        // grab top 10 for charting
+        vis.top10 = filtered.toSorted((a,b) => b.seasonProfanityCount[vis.season] - a.seasonProfanityCount[vis.season]).slice(0,10);
 
-        vis.xScale.domain(vis.bars.map(d => d.value));
-        vis.yScale.domain([0, d3.max(vis.bars, d => d.count)]);
+        console.log(vis.top10);
+
+        vis.xScale.domain(vis.top10.map(d => d.character));
+        vis.yScale.domain([0, d3.max(vis.top10, d => d.seasonProfanityCount[vis.season])]);
         
         vis.renderVis();
     }
@@ -96,13 +91,13 @@ class ProfanityChart {
         let vis = this;
 
         const bars = vis.chart.selectAll('.bar')
-            .data(vis.bars)
+            .data(vis.top10)
         .join('rect')
             .attr('class', 'bar')
             .attr('width', vis.xScale.bandwidth())
-            .attr('height', d => vis.yScale(0) - vis.yScale(d.count))
-            .attr('y', d => vis.yScale(d.count))
-            .attr('x', d => vis.xScale(d.value))
+            .attr('height', d => vis.yScale(0) - vis.yScale(d.seasonProfanityCount[vis.season]))
+            .attr('y', d => vis.yScale(d.seasonProfanityCount[vis.season]))
+            .attr('x', d => vis.xScale(d.character))
             .attr('fill', 'steelblue');
 
         bars
@@ -112,63 +107,16 @@ class ProfanityChart {
                 .style('left', (event.pageX + vis.config.tooltipPadding) + 'px')   
                 .style('top', (event.pageY + vis.config.tooltipPadding) + 'px')
                 .html(`
-                    <div class="tooltip-title">${d.value}</div>
-                    <div><i>Number of counties: ${d.count}</i></div>
+                    <div class="tooltip-title">${d.character}</div>
+                    <div><i>Number of profanities: ${d.seasonProfanityCount[vis.season]}</i></div>
                 `);
             })
             .on('mouseleave', () => {
                 d3.select('#tooltip').style('display', 'none');
-            })
-            .on('mousedown', (event, d) => {
-                let brush_element = vis.svg.select('.overlay').node();
-                let new_event = new MouseEvent('mousedown', {
-                    bubbles: true,
-                    cancelable: true,
-                    view: window,
-                    pageX: event.pageX,
-                    pageY: event.pageY,
-                    clientX: event.clientX,
-                    clientY: event.clientY
-                })
-                brush_element.dispatchEvent(new_event);
             });
         
         vis.xAxisG.call(vis.xAxis);
         vis.yAxisG.call(vis.yAxis);
-
-        vis.brushG.call(vis.brush.on('brush end', function({selection}) {
-            let value = [];
-            if (selection){
-                const [x0, x1] = selection;
-                value = bars
-                .style("fill", "lightgray")
-                .filter(d => x0 <= vis.xScale(d.value) + vis.xScale.bandwidth() && vis.xScale(d.value) < x1)
-                .style("fill", "steelblue")
-                .data();
-            } else {
-                bars.style("fill", "steelblue");
-            }
-
-            if(!vis.resettingBrush && !vis.updatingFromBrush && selection){
-                const [x0, x1] = selection;
-
-                let filteredData = vis.data.filter(d => x0 <= vis.xScale(d.urban_rural_status) + vis.xScale.bandwidth() && vis.xScale(d.urban_rural_status) < x1);
-
-                d3.select(vis.config.parentElement)
-                    .node()
-                    .dispatchEvent(new CustomEvent('brush-selection', {detail:{
-                        brushedData: filteredData
-                    }}))
-            }
-        }
-        ).on('start', function() {
-            // vis.updateVis();
-            if (!vis.resettingBrush){
-                d3.select(vis.config.parentElement)
-                    .node()
-                    .dispatchEvent(new CustomEvent('brush-start', {}));
-            }
-        }));
     }
 
     resetBrush(){
