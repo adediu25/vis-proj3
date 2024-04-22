@@ -131,21 +131,21 @@ function createForceGraph(data) {
         .domain(d3.extent(nodes, node => node.totalFrequency))
         .range(['#FFC0C0', '#8B0000']);
 
-        const node = svg.append("g")
+    const node = svg.append("g")
         .attr("class", "nodes")
         .selectAll("circle")
         .data(nodes)
-        .enter().append("circle")
+        .join("circle")
         .attr("r", node => nodeSizeScale(node.totalFrequency))
         .attr("fill", node => nodeColorScale(node.totalFrequency))
-        .on("mouseover", function(event, d) {
+        .on("mousemove", function(event, d) {
             tooltip.style("visibility", "visible")
                 .style("left", event.pageX + "px") // set the horizontal position
                 .style("top", event.pageY + "px") // set the vertical position
                 .html(`Character: ${d.id}<br>Frequency: ${d.totalFrequency}`);
             d3.select(this).attr("fill", "blue"); 
         })
-        .on("mouseout", function(event, d) { 
+        .on("mouseleave", function(event, d) { 
             tooltip.style("visibility", "hidden");
             d3.select(this).attr("fill", nodeColorScale(d.totalFrequency)); 
         })

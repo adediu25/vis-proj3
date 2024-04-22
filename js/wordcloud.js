@@ -93,7 +93,7 @@ class WordCloud {
                 .attr("text-anchor", "middle")
                 .attr("transform", d => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
                 .text(d => d.text)
-            .on("mouseover", function(event, d) {
+            .on("mousemove", function(event, d) {
                 d3.select(event.target).style('fill', 'blue');
                 // Show the tooltip with the frequency of the word
                 tooltip.style("visibility", "visible")
@@ -101,7 +101,7 @@ class WordCloud {
                     .style("top", event.pageY + "px") // set the vertical position
                     .text("Frequency: " + d.frequency);
             })
-            .on("mouseout", (event, d) => { // Use arrow function here
+            .on("mouseleave", (event, d) => { // Use arrow function here
                 // Hide the tooltip
                 d3.select(event.target).style('fill', this.colorScale(d.size));
                 tooltip.style("visibility", "hidden");
