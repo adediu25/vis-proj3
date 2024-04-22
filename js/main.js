@@ -1,5 +1,6 @@
 let data; // Declare data as a global variable
 let stopwords; // Declare stopwords as a global variable
+let profanity;
 let characterInfo = [];
 let seasonInfo = [];
 let allInfo = {character:'All', inverted_index:{}, season_episode_pairs: []}
@@ -56,7 +57,8 @@ Promise.all([
             characterEntry = {
                 character: d.Character,
                 inverted_index: {},
-                season_episode_pairs: []
+                season_episode_pairs: [],
+                episode_profanity_pairs: []
             };
             characterInfo.push(characterEntry);
         }
@@ -96,6 +98,11 @@ Promise.all([
         });
         let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
 
+        let profanityCount = d.words.reduce((total,word) => {
+            return profanity.includes(word) ? total+1 : total;
+        }, 0)
+        let profanityPair = {season: d.Season, episode: d.Episode, profanity: profanityCount}
+
         // update season episode pairs
         // characters
         let existingPair = characterEntry.season_episode_pairs.find(e => e.season === pair.season && e.episode === pair.episode);
@@ -120,7 +127,14 @@ Promise.all([
         } else {
             allInfo.season_episode_pairs.push(pair);
         }
-    
+
+        let existingProfanity = characterEntry.episode_profanity_pairs.find(e => e.episode === profanityPair.season && e.season === profanityPair.season);
+        if (existingProfanity){
+            existingProfanity.profanity++;
+        } else {
+            characterEntry.episode_profanity_pairs.push(profanityPair);
+        }
+
         dataIndex++; // Increment dataIndex at the end of the loop
     });
 
