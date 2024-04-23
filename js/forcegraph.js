@@ -140,8 +140,8 @@ function createForceGraph(data) {
         .attr("fill", node => nodeColorScale(node.totalFrequency))
         .on("mouseover", function(event, d) {
             tooltip.style("visibility", "visible")
-                .style("left", event.pageX + "px") // set the horizontal position
-                .style("top", event.pageY + "px") // set the vertical position
+                .style("left", (event.pageX + 10) + "px") // adjust horizontal position
+                .style("top", (event.pageY + 10) + "px") // adjust vertical position
                 .html(`Character: ${d.id}<br>Frequency: ${d.totalFrequency}`);
             d3.select(this).attr("fill", "blue"); 
         })
