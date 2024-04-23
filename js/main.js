@@ -8,6 +8,8 @@ let allInfo = {character:'All', inverted_index:{}, season_episode_pairs: []};
 let profanityChart;
 const description = document.getElementById('info');
 const descButton = document.getElementById('toggle-info');
+const searchBar = document.getElementById("character-search");
+const searchButton = document.getElementById("search-button");
 
 // Load CSV file and process data
 Promise.all([
@@ -197,7 +199,55 @@ descButton.addEventListener('click', () => {
       descButton.innerHTML = 'Show Info';
       description.style.display = 'none'
     }
-  })
+});
+
+searchBar.addEventListener("keydown", (event) => {
+    // Check if the key pressed was 'Enter'
+    if (event.key === "Enter") {
+      // Prevent the default action to stop the form from being submitted
+      event.preventDefault();
+      // Trigger the click event on the search button
+      searchButton.click();
+    }
+});
+
+searchButton.addEventListener("click", () => {
+    const searchTerm = searchBar.value.trim().toLowerCase();
+
+    if (searchTerm !== "") {
+        const characterEntry = characterInfo.find(e => e.character.toLowerCase() === searchTerm);
+
+        if (characterEntry){
+            renderInvertedIndex(characterEntry, '#wordcloud');
+        } else {
+            // Create a popup message
+            const popup = document.createElement("div");
+            popup.textContent = "Character not found. Please try again!";
+            // popup.style.position = "absolute";
+            popup.style.backgroundColor = "#f44336"; // Red
+            popup.style.color = "white";
+            popup.style.padding = "10px";
+            popup.style.borderRadius = "5px";
+            // popup.style.top = searchBar.getBoundingClientRect().top + "px";
+            // popup.style.left = searchBar.getBoundingClientRect().left + "px";
+            popup.style.opacity = "1";
+            popup.style.transition = "opacity 0.5s"; // Transition over 1 second
+
+            // Add the popup to the body
+            document.getElementById('search-container').appendChild(popup);
+
+            // After 2 seconds, start fading out the popup
+            setTimeout(() => {
+                popup.style.opacity = "0";
+            }, 1000);
+
+            // After 3 seconds (1 second after the fade out starts), remove the popup
+            setTimeout(() => {
+                document.getElementById('search-container').appendChild(popup);
+            }, 1500);
+        }
+    }
+});
 
 function print_character_top_words(characterEntry){
 
