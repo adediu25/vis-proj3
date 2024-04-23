@@ -1,20 +1,16 @@
-class ProfanityChart {
-    constructor(_config, _data, season="All") {
+class CharacterBar {
+    constructor(_config, _data) {
         // Configuration object with defaults
         // Important: depending on your vis and the type of interactivity you need
         // you might want to use getter and setter methods for individual attributes
         this.config = {
           parentElement: _config.parentElement,
-          containerWidth: _config.containerWidth || 700,
+          containerWidth: _config.containerWidth || 500,
           containerHeight: _config.containerHeight || 400,
-          margin: _config.margin || {top: 20, right: 5, bottom: 20, left: 50},
+          margin: _config.margin || {top: 20, right: 5, bottom: 30, left: 50},
           tooltipPadding: _config.tooltipPadding || 10,
         }
-        this.season = season;
         this.data = _data;
-        this.fullData = this.data;
-        this.resettingBrush = false;
-        this.updatingFromBrush = false;
         this.initVis();
       }
 
@@ -65,7 +61,13 @@ class ProfanityChart {
             .attr('x', 0)
             .attr('y', 0)
             .attr('dy', '.71em')
-            .text('Number of Profanities');
+            .text('Number of Lines');
+
+        // x axis
+        vis.svg.append("text")
+            .attr("transform", `translate(${vis.width / 2 + vis.config.margin.left},${vis.height + vis.config.margin.top + 30})`)
+            .style("text-anchor", "middle")
+            .text("Season");
         
         vis.updateVis();
     }
@@ -73,16 +75,33 @@ class ProfanityChart {
     updateVis() {
         let vis = this;
 
-        // filters out characters that do not appear in the season
-        let filtered = vis.data.filter(d => d.seasonProfanityCount[vis.season]);
+        vis.seasonDialogues = [];
+        vis.data.season_episode_pairs.forEach(d => {
+            let dEntry = vis.seasonDialogues.find(e => e.season == +d.season);
+            if (dEntry){
+                dEntry.dialogues += d.dialogues;
+            } else {
+                dEntry = {
+                    season: +d.season,
+                    dialogues: d.dialogues
+                };
+                vis.seasonDialogues.push(dEntry);
+            }
+        });
 
-        // grab top 10 for charting
-        vis.top10 = filtered.toSorted((a,b) => b.seasonProfanityCount[vis.season] - a.seasonProfanityCount[vis.season]).slice(0,10);
+        for (let i = 1; i < 27; i++) {
+            let e = vis.seasonDialogues.find(x => x.season == i);
 
-        console.log(vis.top10);
+            if (!e){
+                vis.seasonDialogues.push({
+                    season: i,
+                    dialogues: 0
+                });
+            }
+        }
 
-        vis.xScale.domain(vis.top10.map(d => d.character));
-        vis.yScale.domain([0, d3.max(vis.top10, d => d.seasonProfanityCount[vis.season])]);
+        vis.xScale.domain(vis.seasonDialogues.map(d => d.season));
+        vis.yScale.domain([0, d3.max(vis.seasonDialogues, d => d.dialogues)]);
         
         vis.renderVis();
     }
@@ -91,13 +110,13 @@ class ProfanityChart {
         let vis = this;
 
         const bars = vis.chart.selectAll('.bar')
-            .data(vis.top10)
+            .data(vis.seasonDialogues)
         .join('rect')
             .attr('class', 'bar')
             .attr('width', vis.xScale.bandwidth())
-            .attr('height', d => vis.yScale(0) - vis.yScale(d.seasonProfanityCount[vis.season]))
-            .attr('y', d => vis.yScale(d.seasonProfanityCount[vis.season]))
-            .attr('x', d => vis.xScale(d.character))
+            .attr('height', d => vis.yScale(0) - vis.yScale(d.dialogues))
+            .attr('y', d => vis.yScale(d.dialogues))
+            .attr('x', d => vis.xScale(d.season))
             .attr('fill', '#00B8C4');
 
         bars
@@ -107,8 +126,8 @@ class ProfanityChart {
                 .style('left', (event.pageX + vis.config.tooltipPadding) + 'px')   
                 .style('top', (event.pageY + vis.config.tooltipPadding) + 'px')
                 .html(`
-                    <div class="tooltip-title">${d.character}</div>
-                    <div><i>Profanities: ${d.seasonProfanityCount[vis.season]}</i></div>
+                    <div class="tooltip-title">Season ${d.season}</div>
+                    <div><i>Total lines: ${d.dialogues}</i></div>
                 `);
             })
             .on('mouseleave', () => {

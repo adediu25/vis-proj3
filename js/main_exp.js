@@ -55,6 +55,11 @@ Promise.all([
         d.words = filterStopwordsAndPunctuation(d.Line);
         return d;
     });
+    
+    let unfilteredData = data.map(d => {
+        d.words = cleanSentence(d.Line);
+        return d;
+    });
 
     let dataIndex = 0; // Add this line before the forEach loop
 
@@ -89,6 +94,19 @@ Promise.all([
             return counts;
         }, {});
 
+        // let idx = 0;
+        // let gramCounts = unfilteredData[dataIndex].words.reduce((counts, word) => {
+        //     if (idx > 0){
+        //         let bigram = d.words[idx-1] + " " + word;
+        //         counts[bigram] = (counts[bigram] || 0) + 1;
+        //     }
+        //     if (idx > 1){
+        //         let trigram = d.words[idx-2] + " " + d.words[idx-1] + " " + word;
+        //         counts[trigram] = (counts[trigram] || 0) + 1;
+        //     }
+        //     idx++;
+        //     return counts;
+        // }, {});
 
         Object.entries(wordCounts).forEach(([word, count]) => {
             // characters
@@ -109,6 +127,28 @@ Promise.all([
             }
             allInfo.inverted_index[word].push({index: dataIndex, frequency: count});
         });
+
+        // add gram frequencies
+        // Object.entries(gramCounts).forEach(([word, count]) => {
+        //     // characters
+        //     if (!characterEntry.inverted_index[word]) {
+        //         characterEntry.inverted_index[word] = [];
+        //     }
+        //     characterEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+
+        //     // seasons
+        //     if (!seasonEntry.inverted_index[word]) {
+        //         seasonEntry.inverted_index[word] = [];
+        //     }
+        //     seasonEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+
+        //     // all
+        //     if (!allInfo.inverted_index[word]) {
+        //         allInfo.inverted_index[word] = [];
+        //     }
+        //     allInfo.inverted_index[word].push({index: dataIndex, frequency: count});
+        // });
+
         let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
 
         let profanityCount = d.words.reduce((total,word) => {
@@ -265,13 +305,13 @@ searchButton.addEventListener("click", () => {
     }
 });
 
-// phraseSelect.addEventListener('input', function(){
-//     let characterEntry = wordCloud.characterEntry;
-//     let seasonEntry = allCloud.characterEntry;
+phraseSelect.addEventListener('input', function(){
+    let characterEntry = wordCloud.characterEntry;
+    let seasonEntry = allCloud.characterEntry;
     
-//     wordCloud = renderInvertedIndex(characterEntry, "#wordcloud");
-//     allCloud = renderInvertedIndex(seasonEntry,'#allcloud');
-// });
+    wordCloud = renderInvertedIndex(characterEntry, "#wordcloud");
+    allCloud = renderInvertedIndex(seasonEntry,'#allcloud');
+});
 
 phraseSearch.addEventListener("keydown", (event) => {
     // Check if the key pressed was 'Enter'
@@ -296,7 +336,7 @@ phraseSearchButton.addEventListener("click", () => {
         } else {
             // Create a popup message
             const popup = document.createElement("div");
-            popup.textContent = "Word not in data. Please try again!";
+            popup.textContent = "Character not found. Please try again!";
             // popup.style.position = "absolute";
             popup.style.backgroundColor = "#f44336"; // Red
             popup.style.color = "white";
@@ -308,7 +348,7 @@ phraseSearchButton.addEventListener("click", () => {
             popup.style.transition = "opacity 0.5s"; // Transition over 1 second
 
             // Add the popup to the body
-            document.getElementById('search-container-word').appendChild(popup);
+            document.getElementById('search-container').appendChild(popup);
 
             // After 2 seconds, start fading out the popup
             setTimeout(() => {
@@ -317,7 +357,7 @@ phraseSearchButton.addEventListener("click", () => {
 
             // After 3 seconds (1 second after the fade out starts), remove the popup
             setTimeout(() => {
-                document.getElementById('search-container-word').removeChild(popup);
+                document.getElementById('search-container').removeChild(popup);
             }, 1500);
         }
     }

@@ -1,4 +1,5 @@
 function renderInvertedIndex(characterEntry, parentElement) {
+    
     // Clear the previous content
     const container = d3.select(parentElement);
     container.selectAll('*').remove();
@@ -10,11 +11,15 @@ function renderInvertedIndex(characterEntry, parentElement) {
         setCharacterImage(characterEntry.character);
     }
     else {
-        d3.select(parentElement+'-name').text("Season "+characterEntry.character);
+        if (characterEntry.character == "All"){
+            d3.select(parentElement+'-name').text("All Dialogue");
+        }else {
+            d3.select(parentElement+'-name').text("Season "+characterEntry.character + " Dialogue");
+        } 
     }
 
     // Create a new WordCloud instance and draw it
-    const wordCloud = new WordCloud({parentElement: parentElement}, characterEntry);
+    return new WordCloud({parentElement: parentElement}, characterEntry);
 }
 
 
@@ -24,7 +29,8 @@ class WordCloud {
         this.config = {
             parentElement: _config.parentElement,
             width: 500,
-            height: 300
+            height: 300,
+            phraseLength: _config.phraseLength || 1
         };
         this.characterEntry = _characterEntry;
         this.invertedIndex = _characterEntry.inverted_index;
@@ -54,6 +60,10 @@ class WordCloud {
             };
         });
 
+        // select gram length
+        // words = words.filter(d => d.text.split(" ").length == this.config.phraseLength);
+        // words = words.filter(d => d.text.split(" ").length == 1);
+
         words.sort((a, b) => b.size - a.size);
         words = words.slice(0, 100);
 
@@ -62,7 +72,7 @@ class WordCloud {
 
         this.colorScale = d3.scaleLinear()
             .domain([minLogFreq, maxLogFreq])
-            .range(['#FFC0C0', '#8B0000']);
+            .range(['#66DFE7', '#001416']);
 
         const fontSizeScale = d3.scaleLinear()
             .domain([d3.min(words, d => d.size), d3.max(words, d => d.size)])
