@@ -243,7 +243,7 @@ searchButton.addEventListener("click", () => {
 
             // After 3 seconds (1 second after the fade out starts), remove the popup
             setTimeout(() => {
-                document.getElementById('search-container').appendChild(popup);
+                document.getElementById('search-container').removeChild(popup);
             }, 1500);
         }
     }
