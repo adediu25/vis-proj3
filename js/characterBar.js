@@ -100,6 +100,8 @@ class CharacterBar {
             }
         }
 
+        vis.seasonDialogues.sort((a,b) => a.season - b.season);
+
         vis.xScale.domain(vis.seasonDialogues.map(d => d.season));
         vis.yScale.domain([0, d3.max(vis.seasonDialogues, d => d.dialogues)]);
         
