@@ -86,7 +86,7 @@ function createForceGraph(data) {
     // Create a color scale for link strength
     const linkColorScale = d3.scaleLinear()
         .domain(link_range)
-        .range(['#FFC0C0', '#8B0000']);
+        .range(['#66DFE7', '#001416']);
 
     links.forEach(link => {
         link.normalizedValue = linkStrengthScale(link.value);
@@ -129,7 +129,7 @@ function createForceGraph(data) {
     
     const nodeColorScale = d3.scaleLinear()
         .domain(d3.extent(nodes, node => node.totalFrequency))
-        .range(['#FFC0C0', '#8B0000']);
+        .range(['#66DFE7', '#001416']);
 
     const node = svg.append("g")
         .attr("class", "nodes")
@@ -155,7 +155,9 @@ function createForceGraph(data) {
             const characterEntry = characterInfo.find(entry => entry.character === characterName);
             if (characterEntry) {
                 print_character_top_words(characterEntry);
-                renderInvertedIndex(characterEntry, '#wordcloud');
+                // renderInvertedIndex(characterEntry, '#wordcloud');
+                document.getElementById('character-search').value = characterEntry.character;
+                document.getElementById('search-button').dispatchEvent(new Event('click'));
             }
             
         })
