@@ -6,6 +6,8 @@ let seasonInfo = [];
 let allInfo = {character:'All', inverted_index:{}, season_episode_pairs: []};
 // chart objects
 let profanityChart;
+const description = document.getElementById('info');
+const descButton = document.getElementById('toggle-info');
 
 // Load CSV file and process data
 Promise.all([
@@ -174,13 +176,24 @@ d3.select("#season-select").on("input", function(){
 
     if (season === "All") {
         renderInvertedIndex(allInfo,'#allcloud');
-        document.getElementById('char-profanity-name').innerText = "Profanity by Characer All Seasons";
+        document.getElementById('char-profanity-name').innerText = "Profanity by Character All Seasons";
     }
     else {
         renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud');
-        document.getElementById('char-profanity-name').innerText = "Profanity by Characer Season " + season;
+        document.getElementById('char-profanity-name').innerText = "Profanity by Character Season " + season;
     }
 });
+
+descButton.addEventListener('click', () => {
+    if (description.style.display === 'none'){
+      descButton.innerHTML = 'Hide Info';
+      description.style.display = 'block'
+    }
+    else{
+      descButton.innerHTML = 'Show Info';
+      description.style.display = 'none'
+    }
+  })
 
 function print_character_top_words(characterEntry){
 
@@ -199,7 +212,6 @@ function print_character_top_words(characterEntry){
 
 };
 
-let name = characterName.outerText;
 function setCharacterImage(name) {
     const characterImageElement = document.getElementById('character-image');
     switch (name.toLowerCase()) {

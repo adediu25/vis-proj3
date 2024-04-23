@@ -8,8 +8,15 @@
 </head>
 <body>
 
-    <div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/South_park_sign.svg/860px-South_park_sign.svg.png" style="width: 300px; height: 300px;">
+    <div style="display: flex; justify-content: center; margin-bottom: 2em;">
+        <button id="toggle-info">Show Info</button>
+    </div>
+
+    <div id="info" style="display: none;">
+        <div style="display: flex; justify-content: space-evenly; margin-bottom: 5px;">
+            <img src="https://pngimg.com/d/south_park_PNG20.png" style="width: 800px; height: 200px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/South_park_sign.svg/860px-South_park_sign.svg.png" style="width: 200px; height: 200px;">
+        </div>
         <h1>"South Park" is an animated television series created by Trey Parker and Matt Stone that premiered in 1997. Known for its satirical 
             and often controversial humor, the show revolves around four boys—Eric Cartman, Stan Marsh, Kyle Broflovski, and Kenny McCormick (as respectively shown below)—and 
             their bizarre adventures in the small town of South Park, Colorado. "South Park" is famous for its crude animation style, dark comedy, 
@@ -18,9 +25,8 @@
             current, making it a unique blend of comedy and commentary. There are currently 26 seasons (327 episodes) of "South Park" with almost no end in sight even with
             the numerous times it has been target by "cancel culture."
         </h1>
-        <img src="https://pngimg.com/d/south_park_PNG20.png" style="width: 800px; height: 200px;">
-
     </div>
+
     <!-- Page Elements -->
     <label for="season-select">Select Season:</label>
     <select id="season-select">
@@ -53,8 +59,6 @@
         <option value="26">Season 26</option>
     </select>
 
-    <div id="bar-chart"></div>
-
     <!-- <label for="seasonSelect2">Select Season:</label>
     <select id="seasonSelect2">
         <option value="All">All Seasons</option>
@@ -85,35 +89,48 @@
         <option value="25">Season 25</option>
         <option value="26">Season 26</option>
     </select> -->
-    <div id="bar-chart2"></div>
 
+    <div id="charts" style="display: flex; margin-top: 10px;">
+        <div id="bar-chart" style="margin-right: -60px;"></div>
+        <div id="bar-chart2"></div>
+    </div>
 
-    <img id="character-image" src="" alt="Character Image">
-    <div id = "force-graph-parent">
-        <div id="slider-container">
-            <input type="range" min="1" max="10" value="3" id="link-slider" />
-            <label for="link-slider">Number of links per character: <span id="link-count">3</span></label>
+    <div id="imgAndFG" style="display: flex; justify-content: center; align-items: center; margin-bottom: 5px;">
+        <!-- character image -->
+        <img id="character-image" alt="Character Image">
+        <!-- force graph  -->
+        <div id = "force-graph-parent" style="margin-left: 20px;">
+            <div id="slider-container">
+                <input type="range" class="slider" min="1" max="10" value="3" id="link-slider" />
+                <label for="link-slider">Number of links per character: <span id="link-count">3</span></label>
+            </div>
+            <div id="percentage-slider-container">
+                <input type="range" class="slider" id="percentage-slider" min="0.1" max="5" step="0.1" value="0.3">
+                <label for="percentage-slider">Top percentage of characters: <span id="percentage-count">0.3</span>%</label>
+            </div>
+    
+            <div id="force-graph-container"></div>
         </div>
-        <div id="percentage-slider-container">
-            <input type="range" id="percentage-slider" min="0.1" max="5" step="0.1" value="0.3">            <label for="percentage-slider">Top percentage of characters: <span id="percentage-count">0.3</span>%</label>
+        <!-- character force graph wordcloud  -->
+        <div id="wordcloud-parent">
+            <h1 id="wordcloud-name">Cartman</h1>
+            <div id="wordcloud"></div>
         </div>
-   
-        <div id="force-graph-container"></div>
-    </div>
-    <div id="wordcloud-parent">
-        <h1 id="wordcloud-name">Cartman</h1>
-        <div id="wordcloud"></div>
     </div>
 
-    <div id="allcloud-parent">
-        <h1 id="allcloud-name">All Dialogue</h1>
-        <div id="allcloud"></div>
-    </div>
+    <div id="wordclouds" style="display: flex; justify-content: space-evenly; margin-bottom: 5px;">
+        
 
-    <div id="char-profanity-parent">
-        <h1 id="char-profanity-name">Profanity by Characer All Seasons</h1>
-        <div id="char-profanity"></div>
+        <div id="allcloud-parent">
+            <h1 id="allcloud-name">All Dialogue</h1>
+            <div id="allcloud"></div>
+        </div>
+        <div id="char-profanity-parent">
+            <h1 id="char-profanity-name">Profanity by Character All Seasons</h1>
+            <div id="char-profanity"></div>
+        </div>
     </div>
+    
     
     <!-- libraries -->
 
