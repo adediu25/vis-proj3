@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .attr("x", -height/2)
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
-                .text("Number of Episodes Appeared");
+                .text("Number of Episode Appearances");
         };
 
         // Initial draw
