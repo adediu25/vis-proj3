@@ -177,10 +177,14 @@ d3.select("#season-select").on("input", function(){
     if (season === "All") {
         renderInvertedIndex(allInfo,'#allcloud');
         document.getElementById('char-profanity-name').innerText = "Profanity by Character All Seasons";
+        document.getElementById('bar1-name').innerText = "Dialogue Lines by Character All Seasons";
+        document.getElementById('bar2-name').innerText = "Episode Appearances by Character All Seasons";
     }
     else {
         renderInvertedIndex(seasonInfo.find(e => e.character == season),'#allcloud');
         document.getElementById('char-profanity-name').innerText = "Profanity by Character Season " + season;
+        document.getElementById('bar1-name').innerText = "Dialogue Lines by Character Season " + season;
+        document.getElementById('bar2-name').innerText = "Episode Appearances by Character Season " + season;
     }
 });
 
