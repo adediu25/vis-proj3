@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const mainCharacters = ['Kyle', 'Cartman', 'Kenny', 'Stan'];
+    const mainCharacters = ['Kyle', 'Cartman', 'Kenny', 'Stan', 'Butters', 'Randy', 'Mr. Garrison', 'Jimmy', 'Mr. Mackey', 'Chef'];
 
     // Colors picked by color of characters hat
     const colors = {
@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'Kenny': '#F26F03',    
         'Stan': '#4D7DBD'      
     };
+
+    const defaultColor = '#d9b99b';
 
     Promise.all([
         d3.csv('data/season_csvs/Season-1.csv'),
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .attr("width", x.bandwidth())
                 .attr("y", d => y(d.lines))
                 .attr("height", d => height - y(d.lines))
-                .attr("fill", d => colors[d.character])  // Apply color based on character
+                .attr("fill", d => colors[d.character] || defaultColor)  // Apply color based on character
                 .on("mouseover", function(event, d) {
                     tooltip.style("visibility", "visible")
                            .html(`Character: ${d.character}<br>Lines: ${d.lines}`)
