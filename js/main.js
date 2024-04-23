@@ -41,8 +41,6 @@ Promise.all([
     d3.csv('data/season_csvs/Season-26.csv'),
 ]).then(loadedData => {
     data = loadedData.flat(); // Flatten the array of arrays into a single array
-    
-    unfilteredData = data;
 
     // Process each line to be just the words as a list
     data = data.map(d => {
@@ -50,6 +48,10 @@ Promise.all([
         return d;
     });
     
+    let unfilteredData = data.map(d => {
+        d.words = cleanSentence(d.Line);
+        return d;
+    });
 
     let dataIndex = 0; // Add this line before the forEach loop
 
@@ -83,6 +85,21 @@ Promise.all([
             counts[word] = (counts[word] || 0) + 1;
             return counts;
         }, {});
+
+        let idx = 0;
+        let gramCounts = unfilteredData[dataIndex].words.reduce((counts, word) => {
+            if (idx > 0){
+                let bigram = d.words[idx-1] + " " + word;
+                counts[bigram] = (counts[bigram] || 0) + 1;
+            }
+            if (idx > 1){
+                let trigram = d.words[idx-2] + " " + d.words[idx-1] + " " + word;
+                counts[trigram] = (counts[trigram] || 0) + 1;
+            }
+            idx++;
+            return counts;
+        }, {});
+
         Object.entries(wordCounts).forEach(([word, count]) => {
             // characters
             if (!characterEntry.inverted_index[word]) {
@@ -102,6 +119,28 @@ Promise.all([
             }
             allInfo.inverted_index[word].push({index: dataIndex, frequency: count});
         });
+
+        // add gram frequencies
+        Object.entries(gramCounts).forEach(([word, count]) => {
+            // characters
+            if (!characterEntry.inverted_index[word]) {
+                characterEntry.inverted_index[word] = [];
+            }
+            characterEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+
+            // seasons
+            if (!seasonEntry.inverted_index[word]) {
+                seasonEntry.inverted_index[word] = [];
+            }
+            seasonEntry.inverted_index[word].push({index: dataIndex, frequency: count});
+
+            // all
+            if (!allInfo.inverted_index[word]) {
+                allInfo.inverted_index[word] = [];
+            }
+            allInfo.inverted_index[word].push({index: dataIndex, frequency: count});
+        });
+
         let pair = {season: d.Season, episode: d.Episode, dialogues: 1};
 
         let profanityCount = d.words.reduce((total,word) => {

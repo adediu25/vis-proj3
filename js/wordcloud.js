@@ -54,6 +54,9 @@ class WordCloud {
             };
         });
 
+        // select gram length
+        // words = words.filter(d => d.text.split(" ").length == 3);
+
         words.sort((a, b) => b.size - a.size);
         words = words.slice(0, 100);
 
