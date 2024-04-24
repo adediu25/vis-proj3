@@ -84,3 +84,64 @@ Using the word search box, we can search for word associated with current events
 
 Searching "killed" in the word search, we see a downward trend in the use of the word in the show. This follows the fact that the writers used to kill off Kenny in basically every episode, but they stopped doing that as much as the seasons went on. 
 
+## Development Process
+
+Python and BeautifulSoup was used to parse the raw HTML of the webpages for the transcripts of seasons 19-26. Data was dumped to csv, one file per season, with each entry specifying episode, character, and dialogue.
+
+Next, the data needed to be preprocessed. We decided to create a second dataset in memory representing each individual character. Each character had a list of appearances in episodes with the amount of dialogue per episode. Each character also had an inverted index created. The inverted index contained every word the character said, storing each dialogue number that the word was used with. This allowed for more visualizations to be created. Similar data structures were also constructed by season and for the show as a whole. This simplified creating the wide variety of visualiztion that we implemented in our app. We also track a list of stopwords from the nltk Python package which we filter out words for all of the characters' inverted indexes. A list of profane words was also downloaded, which we utilized in one of the visualizations.
+
+Many of the visualizations were intitally created to show some non-interactive data. The word cloud was modified to work with the inverted index of this project as well as developing a force-directed graph to show character relationships. A few bar charts were also created to show various interesting aspects of the data. Then interaction was implemented between the charts on season select and various character selection options.
+
+For the two graphs going over how many episodes each character has been in and how many lines are said, we wanted to included at least 8 chracters in our graphs. This is because there are so many characters in South park that make an appearance and have lines that when we first made the code for the graphs, it was impossible to see everyone on the same screen. We decided to go with 10 total characters and these characters were selected by their popularity in the show. We included a selection so that a user could select a season in South park and see how many appearances and lines each character had. There is also a field that allows users to see the culmination of all the seasons of South Park. The code takes in a parameter of characters so that only the specified characters lines and apperances are counted. The appearances takes in parameters of characters, season, and episode so that each character only gets counted once for each episode (instead of counting each line like the dialogue lines chart does).
+
+The search functionalities took advantage of the data structures created earlier. Each search is checked to see if it exists before requesting to update the visualizations. 
+
+Graph linking was also relatively simple thanks to our data structures. We rigged search bars with event listeners that would grab the necessary data and trigger updates on the necessary graphs.
+
+## Future Work
+
+- Implement N-gram frequencies, allowing analysis on phrases
+- More freedom on season selection, for example, a global season selector as well as a option to select for each specific visualization
+- More interaction, such as allowing a word selection from clicking on a word in a word cloud
+
+## Video Demo
+
+[Youtube Link]()
+
+## Member Contributions
+
+### Alex Dediu: 
+
+- Project management
+- Curated data (webpage parser)
+- Character search function
+- Word frequency chart
+- Word search function
+- All dialogue word cloud
+- Profanity chart
+- Dialogue by character chart
+- Page color/theme
+- Integration and testing
+
+### Zach Carlson: 
+
+- South Park description section
+- Character dialogue bar chart
+- Character episode appearance bar chart
+- Initial selection interaction
+
+### Andrew Gerstenslager: 
+
+- Develop character info data structure
+- Text processing functions (clean text, remove stop words)
+- Pre process data into data structures
+- Force directed graph
+- Base word cloud
+- Character word cloud
+- Force graph to word cloud interactions
+
+### Nick Murray: 
+
+- Import character images
+- Implement character image updating
+- Page element layout
