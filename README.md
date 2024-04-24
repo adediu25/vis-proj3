@@ -106,7 +106,7 @@ Graph linking was also relatively simple thanks to our data structures. We rigge
 
 ## Video Demo
 
-[Youtube Link]()
+[Youtube Link](https://youtu.be/buc_AV1DGlE)
 
 ## Member Contributions
 
